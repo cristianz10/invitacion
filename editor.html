@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>editor-invitacion</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0f172a;--card:#111827;--muted:#94a3b8;--line:#243041;--text:#e5e7eb;--accent:#e11d48}
@@ -30,41 +28,41 @@
   <div class="wrap">
     <div class="top">
       <div>
-        <h1 style="font-size:30px;font-weight:800">Editor de invitación</h1>
-        <p class="muted" style="margin-top:6px">Cargás foto, música, Google Form, CBU y textos. La vista previa se actualiza en tiempo real.</p>
+        <h1 style="font-size:30px;font-weight:800">Editor de invitacion</h1>
+        <p class="muted" style="margin-top:6px">Carga foto, musica, Google Form y textos. La vista previa se actualiza en tiempo real.</p>
       </div>
       <div class="pill">Vista previa: <strong>index2.html</strong></div>
     </div>
 
     <div class="grid">
       <aside class="panel">
-        <div class="field"><label>Tipo de evento</label><input id="eventTitle" value="Mis 15 años"></div>
-        <div class="field"><label>Nombre principal</label><input id="name" value="Isabella"></div>
-        <div class="field"><label>Subtítulo / frase</label><input id="tagline" value="Te invito a celebrar una noche inolvidable"></div>
+        <div class="field"><label>Tipo de evento</label><input id="eventTitle" value="" placeholder="Ej: Mis 15 anos"></div>
+        <div class="field"><label>Nombre principal</label><input id="name" value="" placeholder="Ej: Isabella"></div>
+        <div class="field"><label>Subtitulo / frase</label><input id="tagline" value="" placeholder="Ej: Te invito a celebrar..."></div>
 
         <div class="section-title">Datos del evento</div>
         <label class="inline-check"><input id="showDetails" type="checkbox" checked> Mostrar bloque de detalles</label>
-        <div class="field"><label>Fecha (texto visible)</label><input id="date" value="1 de Mayo, 2026"></div>
-        <div class="field"><label>Fecha para cuenta regresiva ⏳</label><input id="eventDate" type="date" value=""></div>
-        <div class="field"><label>Horario</label><input id="time" value="22:00 hs a 05:00 hs"></div>
-        <div class="field"><label>Lugar</label><input id="venue" value="Clahe Eventos"></div>
-        <div class="field"><label>Dirección</label><input id="address" value="Av. Bartolomé Mitre 2263"></div>
-        <div class="field"><label>Ciudad / zona</label><input id="city" value="Avellaneda, Buenos Aires"></div>
+        <div class="field"><label>Fecha (texto visible)</label><input id="date" value="" placeholder="Ej: 1 de Mayo, 2026"></div>
+        <div class="field"><label>Fecha para cuenta regresiva &#9203;</label><input id="eventDate" type="date" value=""></div>
+        <div class="field"><label>Horario</label><input id="time" value="" placeholder="Ej: 22:00 hs a 05:00 hs"></div>
+        <div class="field"><label>Lugar</label><input id="venue" value="" placeholder="Ej: Salon XYZ"></div>
+        <div class="field"><label>Direccion</label><input id="address" value="" placeholder="Ej: Av. Corrientes 1234"></div>
+        <div class="field"><label>Ciudad / zona</label><input id="city" value="" placeholder="Ej: Buenos Aires"></div>
 
-        <div class="section-title">Confirmación</div>
-        <label class="inline-check"><input id="showRsvp" type="checkbox" checked> Mostrar botón de confirmación</label>
-        <div class="field"><label>Link Google Form</label><input id="formUrl" value="https://forms.gle/mMonqZjCEx5o1ZbG7"></div>
-        <div class="field"><label>Texto botón confirmación</label><input id="rsvpText" value="Confirmar asistencia"></div>
+        <div class="section-title">Confirmacion</div>
+        <label class="inline-check"><input id="showRsvp" type="checkbox" checked> Mostrar boton de confirmacion</label>
+        <div class="field"><label>Link Google Form</label><input id="formUrl" value="" placeholder="https://forms.gle/..."></div>
+        <div class="field"><label>Texto boton confirmacion</label><input id="rsvpText" value="Confirmar asistencia"></div>
 
         <div class="section-title">Vestimenta</div>
         <label class="inline-check"><input id="showDressCode" type="checkbox" checked> Mostrar bloque de vestimenta</label>
-        <div class="field"><label>Etiqueta</label><input id="dressCode" value="Elegante"></div>
-        <div class="field"><label>Texto aclaratorio</label><textarea id="dressNote">Colores a evitar: azul noche, verde inglés y bordo.</textarea></div>
+        <div class="field"><label>Etiqueta</label><input id="dressCode" value="" placeholder="Ej: Elegante"></div>
+        <div class="field"><label>Texto aclaratorio</label><textarea id="dressNote" placeholder="Ej: Colores a evitar..."></textarea></div>
 
         <div class="section-title">Regalo / CBU</div>
-        <label class="inline-check"><input id="showGift" type="checkbox"> Mostrar sección de regalo / CBU</label>
-        <div class="field"><label>Título del bloque</label><input id="giftTitle" value="Si querés regalarme algo"></div>
-        <div class="field"><label>Texto del bloque</label><textarea id="giftMessage">Podés hacerlo por transferencia a la siguiente cuenta.</textarea></div>
+        <label class="inline-check"><input id="showGift" type="checkbox"> Mostrar seccion de regalo / CBU</label>
+        <div class="field"><label>Titulo del bloque</label><input id="giftTitle" value="" placeholder="Ej: Si queres regalarme algo"></div>
+        <div class="field"><label>Texto del bloque</label><textarea id="giftMessage" placeholder="Ej: Podes hacerlo por transferencia..."></textarea></div>
         <div class="field"><label>Alias</label><input id="alias" value=""></div>
         <div class="field"><label>CBU</label><input id="cbu" value=""></div>
         <div class="field"><label>Titular</label><input id="accountHolder" value=""></div>
@@ -72,22 +70,23 @@
 
         <div class="section-title">Archivos</div>
         <div class="field"><label>Foto principal</label><input id="photoFile" type="file" accept="image/*"></div>
-        <div class="field"><label>Música</label><input id="audioFile" type="file" accept="audio/*"></div>
+        <div class="field"><label>Musica (MP3)</label><input id="audioFile" type="file" accept="audio/*"></div>
 
         <div class="section-title">Estilo y cierre</div>
         <div class="field"><label>Color principal</label><input id="accent" type="color" value="#8B4559"></div>
         <label class="inline-check"><input id="showClosing" type="checkbox" checked> Mostrar mensaje final</label>
-        <div class="field"><label>Mensaje final</label><textarea id="closing">Tu presencia es muy importante para mí. ¡Te espero para compartir esta noche especial!</textarea></div>
+        <div class="field"><label>Mensaje final</label><textarea id="closing" placeholder="Ej: Tu presencia es muy importante para mi..."></textarea></div>
 
         <div class="btns">
           <button class="primary" id="updateBtn">Actualizar vista</button>
-          <button class="secondary" id="downloadBtn">Descargar configuración</button>
-          <label class="fakebtn secondary small" for="importConfig">Importar configuración</label>
+          <button class="secondary" id="downloadBtn">Descargar configuracion</button>
+          <label class="fakebtn secondary small" for="importConfig">Importar configuracion</label>
           <input id="importConfig" type="file" accept="application/json" hidden>
-          <button class="warning" id="generateBtn">Generar invitación final</button>
+          <button class="warning" id="generateBtn">Generar invitacion final</button>
           <button class="success" id="openFinalBtn">Abrir index.html</button>
+          <button class="secondary" id="clearBtn" style="background:#7f1d1d;border-color:#991b1b">Limpiar todo</button>
         </div>
-        <p class="note">"Generar invitación final" descarga un HTML con todos los datos incrustados listo para subir como <strong>index.html</strong> a GitHub Pages.</p>
+        <p class="note">"Generar invitacion final" descarga un HTML con todos los datos incrustados listo para subir como <strong>index.html</strong> a GitHub Pages.</p>
       </aside>
 
       <section class="preview"><iframe id="preview" src="./index2.html" title="Vista previa"></iframe></section>
@@ -97,36 +96,37 @@
 <script>
 const STORAGE_KEY = 'invitacionTemplateConfigV2';
 const defaults = {
-  eventTitle:'Mis 15 años', name:'Isabella', tagline:'Te invito a celebrar una noche inolvidable',
-  date:'1 de Mayo, 2026', eventDate:'', time:'22:00 hs a 05:00 hs',
-  venue:'Clahe Eventos', address:'Av. Bartolomé Mitre 2263', city:'Avellaneda, Buenos Aires',
-  formUrl:'https://forms.gle/mMonqZjCEx5o1ZbG7', rsvpText:'Confirmar asistencia',
-  dressCode:'Elegante', dressNote:'Colores a evitar: azul noche, verde inglés y bordo.',
-  giftTitle:'Si querés regalarme algo', giftMessage:'Podés hacerlo por transferencia a la siguiente cuenta.',
+  eventTitle:'', name:'', tagline:'',
+  date:'', eventDate:'', time:'',
+  venue:'', address:'', city:'',
+  formUrl:'', rsvpText:'Confirmar asistencia',
+  dressCode:'', dressNote:'',
+  giftTitle:'', giftMessage:'',
   alias:'', cbu:'', accountHolder:'', bank:'',
-  accent:'#8B4559', closing:'Tu presencia es muy importante para mí. ¡Te espero para compartir esta noche especial!',
+  accent:'#8B4559', closing:'',
   showDetails:true, showRsvp:true, showDressCode:true, showGift:false, showClosing:true,
   photoData:'', audioData:''
 };
 const fieldIds = Object.keys(defaults).filter(k => !k.endsWith('Data'));
 const $ = id => document.getElementById(id);
 let config = loadConfig();
-function loadConfig(){ try{return {...defaults,...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}}catch{return {...defaults}} }
+function loadConfig(){ try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch{return Object.assign({},defaults);} }
 function saveConfig(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); }
-function fillForm(){ fieldIds.forEach(id=>{ const el=$(id); if(!el) return; if(el.type==='checkbox') el.checked=!!config[id]; else el.value=config[id] ?? ''; }); }
+function fillForm(){ fieldIds.forEach(id=>{ const el=$(id); if(!el) return; if(el.type==='checkbox') el.checked=!!config[id]; else el.value=config[id]??''; }); }
 function sendToPreview(){ $('preview').contentWindow.postMessage({type:'INVITACION_CONFIG', payload:config}, '*'); }
 function readFileAsDataURL(file){ return new Promise((resolve,reject)=>{ const r=new FileReader(); r.onload=()=>resolve(r.result); r.onerror=reject; r.readAsDataURL(file); }); }
-fieldIds.forEach(id=>{ const el=$(id); if(!el) return; const ev = el.type==='checkbox' ? 'change' : 'input'; el.addEventListener(ev, ()=>{ config[id]=el.type==='checkbox'?el.checked:el.value; saveConfig(); sendToPreview(); }); });
+fieldIds.forEach(id=>{ const el=$(id); if(!el) return; const ev=el.type==='checkbox'?'change':'input'; el.addEventListener(ev,()=>{ config[id]=el.type==='checkbox'?el.checked:el.value; saveConfig(); sendToPreview(); }); });
 $('photoFile').addEventListener('change', async e=>{ const f=e.target.files[0]; if(!f) return; config.photoData=await readFileAsDataURL(f); saveConfig(); sendToPreview(); });
 $('audioFile').addEventListener('change', async e=>{ const f=e.target.files[0]; if(!f) return; config.audioData=await readFileAsDataURL(f); saveConfig(); sendToPreview(); });
 $('updateBtn').addEventListener('click', sendToPreview);
 $('downloadBtn').addEventListener('click', ()=>{ const blob=new Blob([JSON.stringify(config,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='config-invitacion.json'; a.click(); URL.revokeObjectURL(a.href); });
-$('importConfig').addEventListener('change', async e=>{ const f=e.target.files[0]; if(!f) return; config={...defaults,...JSON.parse(await f.text())}; fillForm(); saveConfig(); sendToPreview(); });
+$('importConfig').addEventListener('change', async e=>{ const f=e.target.files[0]; if(!f) return; config=Object.assign({},defaults,JSON.parse(await f.text())); fillForm(); saveConfig(); sendToPreview(); });
 $('openFinalBtn').addEventListener('click', ()=> window.open('./index.html','_blank','noopener,noreferrer'));
+$('clearBtn').addEventListener('click', ()=>{ if(!confirm('Seguro que queres borrar todo y empezar de cero?')) return; localStorage.removeItem(STORAGE_KEY); config=Object.assign({},defaults); fillForm(); saveConfig(); sendToPreview(); });
 async function generateFinal(){
   const res = await fetch('./index2.html');
   let html = await res.text();
-  html = html.replace('<\/script>', `localStorage.setItem(${JSON.stringify(STORAGE_KEY)}, ${JSON.stringify(JSON.stringify(config))});<\/script>`);
+  html = html.replace('<\/script>', 'localStorage.setItem('+JSON.stringify(STORAGE_KEY)+', '+JSON.stringify(JSON.stringify(config))+');<\/script>');
   const blob = new Blob([html], {type:'text/html;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es" class="h-full">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Invitacion - Mis 15</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Invitacion</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -16,25 +16,26 @@
   </style>
 </head>
 <body class="h-full overflow-auto text-white">
+  <!-- Audio: apunta al MP3 del repo con nombre URL-encoded -->
   <audio id="bg-audio" loop>
-    <source src="BLACKPINK - Tally (Official Audio).mp3" type="audio/mpeg">
+    <source src="BLACKPINK%20-%20Tally%20(Official%20Audio).mp3" type="audio/mpeg">
   </audio>
-  <button id="audio-btn" onclick="toggleAudio()" style="position:fixed;bottom:20px;right:20px;z-index:9999;background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:white;border:none;border-radius:50%;width:52px;height:52px;font-size:20px;cursor:pointer;box-shadow:0 4px 15px rgba(139,69,89,0.5);transition:all .3s ease;" title="Reproducir/Pausar musica">&#128263;</button>
+  <button id="audio-btn" onclick="toggleAudio()" style="position:fixed;bottom:20px;right:20px;z-index:9999;background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:white;border:none;border-radius:50%;width:52px;height:52px;font-size:20px;cursor:pointer;box-shadow:0 4px 15px rgba(139,69,89,0.5);transition:all .3s ease;">&#128263;</button>
   <div id="app-wrapper" class="min-h-full w-full" style="background:linear-gradient(135deg,#1a0a0d 0%,#2D1B1E 25%,#3D252A 50%,#2D1B1E 75%,#1a0a0d 100%);">
     <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
     <div class="relative z-10 w-full max-w-lg mx-auto px-4 py-8">
 
       <section class="text-center mb-12">
         <div class="flex justify-center mb-6"><div class="flex items-center gap-3"><div class="h-px w-16 bg-gradient-to-r from-transparent to-rose-400/60"></div><span class="text-2xl">&#10024;</span><span class="text-3xl">&#128081;</span><span class="text-2xl">&#10024;</span><div class="h-px w-16 bg-gradient-to-l from-transparent to-rose-400/60"></div></div></div>
-        <h1 id="eventTitleEl" class="font-script text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-rose-200 to-rose-300 glow-text float-animation mb-2">Mis 15 anos</h1>
-        <div class="mt-4 mb-3"><h2 id="nameEl" class="font-display text-4xl sm:text-5xl font-semibold tracking-wider" style="color:#D4A5A5;">Isabella</h2></div>
-        <p id="taglineEl" class="font-elegant text-lg text-rose-100/85 mb-8">Te invito a celebrar una noche inolvidable</p>
+        <h1 id="eventTitleEl" class="font-script text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-rose-200 to-rose-300 glow-text float-animation mb-2"></h1>
+        <div class="mt-4 mb-3"><h2 id="nameEl" class="font-display text-4xl sm:text-5xl font-semibold tracking-wider" style="color:#D4A5A5;"></h2></div>
+        <p id="taglineEl" class="font-elegant text-lg text-rose-100/85 mb-8"></p>
         <div class="relative mx-auto w-64 h-80 sm:w-72 sm:h-96 mb-8">
           <div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-rose-400/60"></div>
           <div class="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-rose-400/60"></div>
           <div class="absolute -bottom-3 -left-3 w-8 h-8 border-b-2 border-l-2 border-rose-400/60"></div>
           <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-rose-400/60"></div>
-          <div class="gradient-border p-1 rounded-2xl h-full"><div class="photo-frame rounded-xl h-full overflow-hidden bg-gradient-to-br from-rose-900/40 to-rose-950/60"><img id="mainPhoto" alt="Foto principal" class="w-full h-full object-cover object-top" src="https://picsum.photos/seed/invitacion/800/1200"></div></div>
+          <div class="gradient-border p-1 rounded-2xl h-full"><div class="photo-frame rounded-xl h-full overflow-hidden bg-gradient-to-br from-rose-900/40 to-rose-950/60"><img id="mainPhoto" alt="Foto principal" class="w-full h-full object-cover object-top" src=""></div></div>
         </div>
       </section>
 
@@ -43,32 +44,32 @@
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Faltan</span>
           <h3 class="font-script text-3xl text-rose-200 mt-1 mb-6">Cuenta regresiva</h3>
           <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-sm mx-auto">
-            <div class="pulse-cd" style="animation-delay:0s"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-days" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Dias</div></div></div>
-            <div class="pulse-cd" style="animation-delay:.1s"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-hours" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Horas</div></div></div>
-            <div class="pulse-cd" style="animation-delay:.2s"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-mins" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Min</div></div></div>
-            <div class="pulse-cd" style="animation-delay:.3s"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-secs" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Seg</div></div></div>
+            <div class="pulse-cd"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-days" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Dias</div></div></div>
+            <div class="pulse-cd"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-hours" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Horas</div></div></div>
+            <div class="pulse-cd"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-mins" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Min</div></div></div>
+            <div class="pulse-cd"><div class="bg-gradient-to-br from-rose-800/60 to-rose-900/80 rounded-2xl p-3 sm:p-4 border border-rose-700/30"><div id="cd-secs" class="font-display text-3xl sm:text-4xl font-bold text-rose-100">00</div><div class="font-elegant text-rose-400/80 text-xs sm:text-sm uppercase tracking-wider mt-1">Seg</div></div></div>
           </div>
           <p id="cd-done" class="hidden font-script text-2xl text-rose-300 mt-4">&#161;Ya es la noche especial! &#10024;</p>
         </div>
       </section>
 
-      <section id="detailsSection" class="mb-12"><div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30"><div class="text-center mb-8"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Te invito a celebrar</span><h3 class="font-script text-3xl text-rose-200 mt-2">Los detalles</h3></div><div class="space-y-6"><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128197;</div><div><p class="font-display text-rose-300 font-medium">Fecha</p><p id="dateEl" class="font-elegant text-rose-100/90 text-lg">1 de Mayo, 2026</p></div></div><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128345;</div><div><p class="font-display text-rose-300 font-medium">Horario</p><p id="timeEl" class="font-elegant text-rose-100/90 text-lg">22:00 hs a 05:00 hs</p></div></div><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128205;</div><div><p id="venueEl" class="font-display text-rose-300 font-medium">Clahe Eventos</p><p id="addressEl" class="font-elegant text-rose-100/90 text-lg">Av. Bartolome Mitre 2263</p><p id="cityEl" class="font-elegant text-rose-400/70 text-sm mt-1">Avellaneda, Buenos Aires</p></div></div></div></div></section>
+      <section id="detailsSection" class="mb-12"><div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30"><div class="text-center mb-8"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Te invito a celebrar</span><h3 class="font-script text-3xl text-rose-200 mt-2">Los detalles</h3></div><div class="space-y-6"><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128197;</div><div><p class="font-display text-rose-300 font-medium">Fecha</p><p id="dateEl" class="font-elegant text-rose-100/90 text-lg"></p></div></div><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128345;</div><div><p class="font-display text-rose-300 font-medium">Horario</p><p id="timeEl" class="font-elegant text-rose-100/90 text-lg"></p></div></div><div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128205;</div><div><p id="venueEl" class="font-display text-rose-300 font-medium"></p><p id="addressEl" class="font-elegant text-rose-100/90 text-lg"></p><p id="cityEl" class="font-elegant text-rose-400/70 text-sm mt-1"></p></div></div></div></div></section>
 
-      <section id="dressSection" class="mb-12"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Vestimenta</span><h3 class="font-script text-3xl text-rose-200 mt-2">Codigo de vestimenta</h3><div class="flex justify-center my-7"><div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-rose-500/40 bg-rose-800/30"><span class="text-xl">&#128087;</span><span id="dressCodeEl" class="font-display text-rose-100 text-xl tracking-widest">Elegante</span><span class="text-xl">&#129333;</span></div></div><p id="dressNoteEl" class="font-elegant text-rose-100/80 text-lg">Colores a evitar: azul noche, verde ingles y bordo.</p></div></section>
+      <section id="dressSection" class="mb-12"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Vestimenta</span><h3 class="font-script text-3xl text-rose-200 mt-2">Codigo de vestimenta</h3><div class="flex justify-center my-7"><div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-rose-500/40 bg-rose-800/30"><span class="text-xl">&#128087;</span><span id="dressCodeEl" class="font-display text-rose-100 text-xl tracking-widest"></span><span class="text-xl">&#129333;</span></div></div><p id="dressNoteEl" class="font-elegant text-rose-100/80 text-lg"></p></div></section>
 
-      <section id="giftSection" class="mb-12 hidden-block"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Regalo</span><h3 id="giftTitleEl" class="font-script text-3xl text-rose-200 mt-2">Si queres regalarme algo</h3><p id="giftMessageEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5">Podes hacerlo por transferencia a la siguiente cuenta.</p><div class="mt-6 space-y-3 text-left max-w-md mx-auto"><div id="aliasRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><p class="font-display text-rose-300">Alias</p><p id="aliasEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="cbuRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><p class="font-display text-rose-300">CBU</p><p id="cbuEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="holderRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><p class="font-display text-rose-300">Titular</p><p id="accountHolderEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="bankRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20"><p class="font-display text-rose-300">Banco</p><p id="bankEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div></div></div></section>
+      <section id="giftSection" class="mb-12 hidden-block"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Regalo</span><h3 id="giftTitleEl" class="font-script text-3xl text-rose-200 mt-2"></h3><p id="giftMessageEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5"></p><div class="mt-6 space-y-3 text-left max-w-md mx-auto"><div id="aliasRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Alias</p><p id="aliasEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="cbuRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">CBU</p><p id="cbuEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="holderRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Titular</p><p id="accountHolderEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div><div id="bankRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Banco</p><p id="bankEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div></div></div></section>
 
-      <section id="closingSection" class="mb-12"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Mensaje</span><h3 class="font-script text-3xl text-rose-200 mt-2">Una noche especial</h3><p id="closingEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5">Tu presencia es muy importante para mi. Te espero para compartir esta noche especial!</p></div></section>
+      <section id="closingSection" class="mb-12"><div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center"><span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Mensaje</span><h3 class="font-script text-3xl text-rose-200 mt-2">Una noche especial</h3><p id="closingEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5"></p></div></section>
 
-      <section id="rsvpSection" class="pb-10"><div class="text-center"><a id="rsvpBtn" href="https://forms.gle/mMonqZjCEx5o1ZbG7" target="_blank" rel="noopener noreferrer" class="btn-elegant inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));"><span>&#128140;</span><span id="rsvpTextEl">Confirmar asistencia</span></a><p class="font-elegant text-rose-300/70 mt-4 text-sm">Al hacer clic se abre el formulario de Google para confirmar.</p></div></section>
+      <section id="rsvpSection" class="pb-10"><div class="text-center"><a id="rsvpBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-elegant inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));"><span>&#128140;</span><span id="rsvpTextEl">Confirmar asistencia</span></a><p class="font-elegant text-rose-300/70 mt-4 text-sm">Al hacer clic se abre el formulario de Google para confirmar.</p></div></section>
     </div>
   </div>
 <script>
 const STORAGE_KEY='invitacionTemplateConfigV2';
-const defaults={eventTitle:'Mis 15 anos',name:'Isabella',tagline:'Te invito a celebrar una noche inolvidable',date:'1 de Mayo, 2026',eventDate:'',time:'22:00 hs a 05:00 hs',venue:'Clahe Eventos',address:'Av. Bartolome Mitre 2263',city:'Avellaneda, Buenos Aires',formUrl:'https://forms.gle/mMonqZjCEx5o1ZbG7',rsvpText:'Confirmar asistencia',dressCode:'Elegante',dressNote:'Colores a evitar: azul noche, verde ingles y bordo.',giftTitle:'Si queres regalarme algo',giftMessage:'Podes hacerlo por transferencia a la siguiente cuenta.',alias:'',cbu:'',accountHolder:'',bank:'',accent:'#8B4559',closing:'Tu presencia es muy importante para mi. Te espero para compartir esta noche especial!',showDetails:true,showRsvp:true,showDressCode:true,showGift:false,showClosing:true,photoData:'',audioData:''};
+const defaults={eventTitle:'',name:'',tagline:'',date:'',eventDate:'',time:'',venue:'',address:'',city:'',formUrl:'',rsvpText:'Confirmar asistencia',dressCode:'',dressNote:'',giftTitle:'',giftMessage:'',alias:'',cbu:'',accountHolder:'',bank:'',accent:'#8B4559',closing:'',showDetails:true,showRsvp:true,showDressCode:true,showGift:false,showClosing:true,photoData:'',audioData:''};
 function hexToRgb(hex){const s=(hex||'#8B4559').replace('#','');const full=s.length===3?s.split('').map(c=>c+c).join(''):s;const n=parseInt(full,16);return{r:(n>>16)&255,g:(n>>8)&255,b:n&255};}
-function darken(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.max(0,Math.round(v*(1-a)));return'rgb('+f(r)+', '+f(g)+', '+f(b)+')';}
-function lighten(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.min(255,Math.round(v+(255-v)*a));return'rgb('+f(r)+', '+f(g)+', '+f(b)+')';}
+function darken(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.max(0,Math.round(v*(1-a)));return'rgb('+f(r)+','+f(g)+','+f(b)+')';}
+function lighten(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.min(255,Math.round(v+(255-v)*a));return'rgb('+f(r)+','+f(g)+','+f(b)+')';}
 function text(id,v){const el=document.getElementById(id);if(el)el.textContent=v||'';}
 function show(id,ok){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!ok);}
 function showRow(id,val){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!val);}
@@ -85,11 +86,7 @@ function startCountdown(dateStr,timeStr){
   const done=document.getElementById('cd-done');
   function tick(){
     const diff=target-Date.now();
-    if(diff<=0){
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});
-      if(done)done.classList.remove('hidden');
-      clearInterval(cdInterval);return;
-    }
+    if(diff<=0){['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='00';});if(done)done.classList.remove('hidden');clearInterval(cdInterval);return;}
     if(done)done.classList.add('hidden');
     const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
     const pad=n=>String(n).padStart(2,'0');
@@ -112,6 +109,10 @@ function applyConfig(cfg){
   show('detailsSection',c.showDetails);show('dressSection',c.showDressCode);show('giftSection',c.showGift);show('closingSection',c.showClosing);show('rsvpSection',c.showRsvp);
   showRow('aliasRow',c.alias);showRow('cbuRow',c.cbu);showRow('holderRow',c.accountHolder);showRow('bankRow',c.bank);
   if(c.photoData){const img=document.getElementById('mainPhoto');if(img)img.src=c.photoData;}
+  if(c.audioData){
+    const audio=document.getElementById('bg-audio');
+    if(audio){audio.innerHTML='<source src="'+c.audioData+'" type="audio/mpeg">';audio.load();}
+  }
   document.documentElement.style.setProperty('--accent',c.accent);
   document.documentElement.style.setProperty('--accent-dark',darken(c.accent,0.22));
   document.documentElement.style.setProperty('--accent-light',lighten(c.accent,0.35));
