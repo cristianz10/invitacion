@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="es" class="h-full">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Invitacion</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Invitacion</title>
+  <meta id="ogTitle" property="og:title" content="Invitacion">
+  <meta id="ogDesc" property="og:description" content="Te invito a celebrar">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -19,40 +22,43 @@
     :root{--accent:#8B4559;--accent-light:#D4A5A5;--accent-dark:#722F37}
     .hidden-block{display:none}
     @keyframes pulse-num{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}.pulse-num{animation:pulse-num 1s ease-in-out infinite}
-    /* tap to start overlay */
-    #tap-overlay{position:fixed;inset:0;z-index:99999;background:rgba(20,5,8,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;}
-    #tap-overlay h2{font-family:'Great Vibes',cursive;font-size:2.5rem;color:#D4A5A5;margin-bottom:12px;}
-    #tap-overlay p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#f0d0d8;margin-bottom:32px;}
-    #tap-overlay .tap-btn{background:linear-gradient(135deg,#722F37,#8B4559);color:#fff;border:none;border-radius:999px;padding:16px 40px;font-size:1.1rem;font-family:'Playfair Display',serif;cursor:pointer;box-shadow:0 4px 24px rgba(139,69,89,.5);}
-    /* rsvp form */
+    #tap-overlay{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;padding:24px;text-align:center;}
+    #tap-overlay .tap-bg{position:absolute;inset:0;background:rgba(20,5,8,.95);}
+    #tap-overlay .tap-content{position:relative;z-index:2;}
+    #tap-overlay .tap-photo{width:160px;height:200px;object-fit:cover;object-position:top;border-radius:18px;margin-bottom:20px;border:3px solid rgba(212,165,165,.4);display:none;}
+    #tap-overlay h2{font-family:'Great Vibes',cursive;font-size:2.8rem;color:#D4A5A5;margin:0 0 8px;}
+    #tap-overlay p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#f0d0d8;margin:0 0 28px;}
+    #tap-overlay .tap-btn{background:linear-gradient(135deg,#722F37,#8B4559);color:#fff;border:none;border-radius:999px;padding:16px 44px;font-size:1.1rem;font-family:'Playfair Display',serif;cursor:pointer;box-shadow:0 4px 24px rgba(139,69,89,.5);}
     .rsvp-input{width:100%;background:rgba(139,69,89,.15);border:1px solid rgba(139,69,89,.4);color:#f8fafc;border-radius:14px;padding:14px 16px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-top:8px;outline:none;}
     .rsvp-input:focus{border-color:#D4A5A5;}
     .rsvp-radio-group{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap;}
     .rsvp-radio-label{display:flex;align-items:center;gap:8px;background:rgba(139,69,89,.15);border:1px solid rgba(139,69,89,.35);border-radius:12px;padding:10px 18px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#f0d0d8;transition:all .2s;}
     .rsvp-radio-label:has(input:checked){background:rgba(139,69,89,.45);border-color:#D4A5A5;}
     .rsvp-radio-label input{accent-color:#D4A5A5;}
-    #rsvp-success{display:none;}
+    #acompananteBlock{margin-top:14px;}
+    select.rsvp-input{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23D4A5A5' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;background-color:rgba(139,69,89,.15);}
+    select.rsvp-input option{background:#2D1B1E;color:#f8fafc;}
   </style>
 </head>
 <body class="h-full overflow-auto text-white">
 
-  <!-- TAP TO START (autoplay workaround) -->
   <div id="tap-overlay">
-    <h2>&#10024; Te invito &#10024;</h2>
-    <p>Toca para abrir tu invitacion</p>
-    <button class="tap-btn" onclick="startExperience()">&#127873; Abrir invitacion</button>
+    <div class="tap-bg"></div>
+    <div class="tap-content">
+      <img id="tapPhoto" class="tap-photo" alt="foto">
+      <h2 id="tapName">&#10024; Te invito &#10024;</h2>
+      <p id="tapTagline">Toca para abrir tu invitacion</p>
+      <button class="tap-btn" onclick="startExperience()">&#127873; Abrir invitacion</button>
+    </div>
   </div>
 
-  <audio id="bg-audio" loop>
-    <source src="BLACKPINK%20-%20Tally%20(Official%20Audio).mp3" type="audio/mpeg">
-  </audio>
+  <audio id="bg-audio" loop></audio>
   <button id="audio-btn" onclick="toggleAudio()" style="position:fixed;bottom:20px;right:20px;z-index:9998;background:linear-gradient(135deg,var(--accent-dark),var(--accent));color:white;border:none;border-radius:50%;width:52px;height:52px;font-size:20px;cursor:pointer;box-shadow:0 4px 15px rgba(139,69,89,0.5);display:none;">&#128266;</button>
 
   <div id="app-wrapper" class="min-h-full w-full" style="background:linear-gradient(135deg,#1a0a0d 0%,#2D1B1E 25%,#3D252A 50%,#2D1B1E 75%,#1a0a0d 100%);">
     <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
     <div class="relative z-10 w-full max-w-lg mx-auto px-4 py-8">
 
-      <!-- HERO -->
       <section class="text-center mb-12">
         <div class="flex justify-center mb-6">
           <div class="flex items-center gap-3">
@@ -77,7 +83,6 @@
         </div>
       </section>
 
-      <!-- CUENTA REGRESIVA -->
       <section id="countdownSection" class="mb-12 hidden-block">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">&#8987; Cuenta regresiva</span>
@@ -95,7 +100,6 @@
         </div>
       </section>
 
-      <!-- DETALLES -->
       <section id="detailsSection" class="mb-12">
         <div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-8">
@@ -119,7 +123,6 @@
         </div>
       </section>
 
-      <!-- VESTIMENTA -->
       <section id="dressSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Vestimenta</span>
@@ -133,7 +136,6 @@
         </div>
       </section>
 
-      <!-- REGALO -->
       <section id="giftSection" class="mb-12 hidden-block">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Regalo</span>
@@ -148,7 +150,6 @@
         </div>
       </section>
 
-      <!-- CIERRE -->
       <section id="closingSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Mensaje</span>
@@ -157,37 +158,51 @@
         </div>
       </section>
 
-      <!-- RSVP INLINE -->
       <section id="rsvpSection" class="pb-10">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-6">
             <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Confirmacion</span>
             <h3 class="font-script text-3xl text-rose-200 mt-2">&#10084;&#65039; Confirmar asistencia</h3>
           </div>
-
-          <!-- Formulario inline -->
           <div id="rsvp-form">
             <div class="mb-4">
               <label class="font-display text-rose-300 text-sm font-medium">Tu nombre completo</label>
               <input id="rsvp-nombre" class="rsvp-input" type="text" placeholder="Escribi tu nombre...">
             </div>
-            <div class="mb-6">
+            <div class="mb-4">
               <label class="font-display text-rose-300 text-sm font-medium">&#191;Vas a asistir?</label>
               <div class="rsvp-radio-group">
-                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="Si, confirmo asistencia"> &#127881; Si, voy a ir</label>
-                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="No puedo asistir"> &#128532; No voy a poder</label>
+                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="Si, confirmo asistencia" onchange="toggleAcompanante()"> &#127881; Si, voy a ir</label>
+                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="No puedo asistir" onchange="toggleAcompanante()"> &#128532; No voy a poder</label>
               </div>
             </div>
-            <button onclick="enviarRSVP()" class="btn-elegant w-full flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));">
+            <div id="acompananteBlock" class="hidden-block">
+              <div class="mb-4">
+                <label class="font-display text-rose-300 text-sm font-medium">&#191;Vas solo/a o acompanado/a?</label>
+                <div class="rsvp-radio-group">
+                  <label class="rsvp-radio-label"><input type="radio" name="acompanado" value="Solo/a" onchange="toggleCantidad()"> &#128100; Solo/a</label>
+                  <label class="rsvp-radio-label"><input type="radio" name="acompanado" value="Con acompanante/s" onchange="toggleCantidad()"> &#128101; Con acompanante/s</label>
+                </div>
+              </div>
+              <div id="cantidadBlock" class="hidden-block mb-4">
+                <label class="font-display text-rose-300 text-sm font-medium">&#191;Con cuantos acompanantes venis? (sin contarte)</label>
+                <select id="rsvp-cantidad" class="rsvp-input">
+                  <option value="1">1 acompanante</option>
+                  <option value="2">2 acompanantes</option>
+                  <option value="3">3 acompanantes</option>
+                  <option value="4">4 acompanantes</option>
+                  <option value="5">5 o mas</option>
+                </select>
+              </div>
+            </div>
+            <button onclick="enviarRSVP()" class="btn-elegant w-full flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl mt-2" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));">
               <span>&#128140;</span><span id="rsvpTextEl">Confirmar</span>
             </button>
-            <p class="font-elegant text-rose-300/60 mt-3 text-sm text-center">Al confirmar se abre el formulario con tus datos pre-completados.</p>
+            <p class="font-elegant text-rose-300/60 mt-3 text-sm text-center">Al confirmar se registra tu asistencia.</p>
           </div>
-
-          <!-- Mensaje de exito -->
-          <div id="rsvp-success" class="text-center py-4">
-            <p class="font-script text-3xl text-rose-200 mb-2">&#10024; Gracias! &#10024;</p>
-            <p class="font-elegant text-rose-100/80 text-lg">Tu confirmacion fue enviada.</p>
+          <div id="rsvp-success" class="text-center py-6 hidden-block">
+            <p class="font-script text-4xl text-rose-200 mb-3">&#10024; Gracias! &#10024;</p>
+            <p class="font-elegant text-rose-100/80 text-xl">Tu confirmacion fue recibida.</p>
           </div>
         </div>
       </section>
@@ -196,46 +211,22 @@
   </div>
 
 <script>
-const STORAGE_KEY = 'invitacionTemplateConfigV2';
-const defaults = {
-  eventTitle:'', name:'', tagline:'',
-  eventDateTime:'',
-  time:'', venue:'', address:'', city:'',
-  formUrl:'', rsvpText:'Confirmar',
-  dressCode:'', dressNote:'',
-  giftTitle:'', giftMessage:'',
-  alias:'', cbu:'', accountHolder:'', bank:'',
-  accent:'#8B4559', closing:'',
-  showDetails:true, showRsvp:true, showDressCode:true, showGift:false, showClosing:true,
-  photoData:'', audioData:''
-};
-let _formUrl = '';
+const STORAGE_KEY='invitacionTemplateConfigV2';
+const defaults={eventTitle:'',name:'',tagline:'',eventDateTime:'',time:'',venue:'',address:'',city:'',formUrl:'',rsvpText:'Confirmar',dressCode:'',dressNote:'',giftTitle:'',giftMessage:'',alias:'',cbu:'',accountHolder:'',bank:'',accent:'#8B4559',closing:'',showDetails:true,showRsvp:true,showDressCode:true,showGift:false,showClosing:true,photoData:'',audioData:''};
+let _formUrl='';
 function hexToRgb(hex){const s=(hex||'#8B4559').replace('#','');const full=s.length===3?s.split('').map(c=>c+c).join(''):s;const n=parseInt(full,16);return{r:(n>>16)&255,g:(n>>8)&255,b:n&255};}
 function darken(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.max(0,Math.round(v*(1-a)));return'rgb('+f(r)+','+f(g)+','+f(b)+')';}
 function lighten(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.min(255,Math.round(v+(255-v)*a));return'rgb('+f(r)+','+f(g)+','+f(b)+')';}
 function txt(id,v){const el=document.getElementById(id);if(el)el.textContent=v||'';}
 function show(id,ok){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!ok);}
 function showRow(id,val){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!val);}
-function formatDateForDisplay(dtStr){
-  if(!dtStr) return '';
-  const dt=new Date(dtStr);
-  if(isNaN(dt.getTime())) return dtStr;
-  return dt.toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
-}
-function formatTimeForDisplay(dtStr){
-  if(!dtStr) return '';
-  const dt=new Date(dtStr);
-  if(isNaN(dt.getTime())) return '';
-  const h=String(dt.getHours()).padStart(2,'0');
-  const m=String(dt.getMinutes()).padStart(2,'0');
-  return h+':'+m+' hs';
-}
+function formatDateForDisplay(dtStr){if(!dtStr)return'';const dt=new Date(dtStr);if(isNaN(dt.getTime()))return dtStr;return dt.toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});}
+function formatTimeForDisplay(dtStr){if(!dtStr)return'';const dt=new Date(dtStr);if(isNaN(dt.getTime()))return'';return String(dt.getHours()).padStart(2,'0')+':'+String(dt.getMinutes()).padStart(2,'0')+' hs';}
 let cdInterval=null;
 function startCountdown(dtStr){
   clearInterval(cdInterval);
   const sec=document.getElementById('countdownSection');
   if(!dtStr){if(sec)sec.classList.add('hidden-block');return;}
-  // soportar formato viejo eventDate+time y nuevo eventDateTime
   const target=new Date(dtStr);
   if(isNaN(target.getTime())){if(sec)sec.classList.add('hidden-block');return;}
   if(sec)sec.classList.remove('hidden-block');
@@ -244,50 +235,43 @@ function startCountdown(dtStr){
   function pad(n){return String(n).padStart(2,'0');}
   function tick(){
     const diff=target-Date.now();
-    if(diff<=0){
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){const el=document.getElementById(id);if(el)el.textContent='00';});
-      if(done)done.classList.remove('hidden');
-      if(cdText)cdText.style.display='none';
-      clearInterval(cdInterval);return;
-    }
-    if(done)done.classList.add('hidden');
-    if(cdText)cdText.style.display='';
-    const d=Math.floor(diff/86400000);
-    const h=Math.floor((diff%86400000)/3600000);
-    const m=Math.floor((diff%3600000)/60000);
-    const s=Math.floor((diff%60000)/1000);
+    if(diff<=0){['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){const el=document.getElementById(id);if(el)el.textContent='00';});if(done)done.classList.remove('hidden');if(cdText)cdText.style.display='none';clearInterval(cdInterval);return;}
+    if(done)done.classList.add('hidden');if(cdText)cdText.style.display='';
+    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
     const cd=document.getElementById('cd-days');if(cd)cd.textContent=pad(d);
     const ch=document.getElementById('cd-hours');if(ch)ch.textContent=pad(h);
     const cm=document.getElementById('cd-mins');if(cm)cm.textContent=pad(m);
     const cs=document.getElementById('cd-secs');if(cs)cs.textContent=pad(s);
   }
-  tick();
-  cdInterval=setInterval(tick,1000);
+  tick();cdInterval=setInterval(tick,1000);
 }
 function applyConfig(cfg){
   const c=Object.assign({},defaults,cfg);
-  // migracion: si no tiene eventDateTime pero tiene eventDate, construirlo
-  if(!c.eventDateTime && c.eventDate){
-    const t = c.time ? c.time.match(/(\d{1,2}):(\d{2})/) : null;
-    c.eventDateTime = c.eventDate + 'T' + (t ? t[0] : '20:00') + ':00';
-  }
-  txt('eventTitleEl',c.eventTitle); txt('nameEl',c.name); txt('taglineEl',c.tagline);
-  txt('dateEl', formatDateForDisplay(c.eventDateTime));
-  txt('timeEl', c.time || (c.eventDateTime ? formatTimeForDisplay(c.eventDateTime)+' hs' : ''));
-  txt('venueEl',c.venue); txt('addressEl',c.address); txt('cityEl',c.city);
-  txt('dressCodeEl',c.dressCode); txt('dressNoteEl',c.dressNote);
-  txt('giftTitleEl',c.giftTitle); txt('giftMessageEl',c.giftMessage);
-  txt('aliasEl',c.alias); txt('cbuEl',c.cbu); txt('accountHolderEl',c.accountHolder); txt('bankEl',c.bank);
-  txt('closingEl',c.closing); txt('rsvpTextEl',c.rsvpText||'Confirmar');
-  _formUrl = c.formUrl || '';
-  show('detailsSection',c.showDetails); show('dressSection',c.showDressCode);
-  show('giftSection',c.showGift); show('closingSection',c.showClosing); show('rsvpSection',c.showRsvp);
-  showRow('aliasRow',c.alias); showRow('cbuRow',c.cbu); showRow('holderRow',c.accountHolder); showRow('bankRow',c.bank);
+  if(!c.eventDateTime&&c.eventDate){const t=c.time?c.time.match(/(\d{1,2}):(\d{2})/):null;c.eventDateTime=c.eventDate+'T'+(t?t[0]:'20:00')+':00';}
+  // titulo dinamico
+  const titleStr=(c.eventTitle&&c.name)?(c.eventTitle+' - '+c.name):(c.name||c.eventTitle||'Invitacion');
+  document.title=titleStr;
+  const ogT=document.getElementById('ogTitle');if(ogT)ogT.content=titleStr;
+  const ogD=document.getElementById('ogDesc');if(ogD)ogD.content=c.tagline||'Te invito a celebrar';
+  // overlay
+  const tapName=document.getElementById('tapName');if(tapName)tapName.textContent=c.name?'&#10024; '+c.name+' &#10024;':c.eventTitle||'Te invito';
+  if(tapName&&c.name)tapName.innerHTML='&#10024; '+c.name+' &#10024;';
+  const tapTag=document.getElementById('tapTagline');if(tapTag)tapTag.textContent=c.tagline||'Toca para abrir tu invitacion';
+  if(c.photoData){const tp=document.getElementById('tapPhoto');if(tp){tp.src=c.photoData;tp.style.display='block';}}
+  txt('eventTitleEl',c.eventTitle);txt('nameEl',c.name);txt('taglineEl',c.tagline);
+  txt('dateEl',formatDateForDisplay(c.eventDateTime));
+  txt('timeEl',c.time||(c.eventDateTime?formatTimeForDisplay(c.eventDateTime):''));
+  txt('venueEl',c.venue);txt('addressEl',c.address);txt('cityEl',c.city);
+  txt('dressCodeEl',c.dressCode);txt('dressNoteEl',c.dressNote);
+  txt('giftTitleEl',c.giftTitle);txt('giftMessageEl',c.giftMessage);
+  txt('aliasEl',c.alias);txt('cbuEl',c.cbu);txt('accountHolderEl',c.accountHolder);txt('bankEl',c.bank);
+  txt('closingEl',c.closing);txt('rsvpTextEl',c.rsvpText||'Confirmar');
+  _formUrl=c.formUrl||'';
+  show('detailsSection',c.showDetails);show('dressSection',c.showDressCode);
+  show('giftSection',c.showGift);show('closingSection',c.showClosing);show('rsvpSection',c.showRsvp);
+  showRow('aliasRow',c.alias);showRow('cbuRow',c.cbu);showRow('holderRow',c.accountHolder);showRow('bankRow',c.bank);
   if(c.photoData){const img=document.getElementById('mainPhoto');if(img)img.src=c.photoData;}
-  if(c.audioData){
-    const audio=document.getElementById('bg-audio');
-    if(audio){audio.innerHTML='<source src="'+c.audioData+'" type="audio/mpeg">';audio.load();}
-  }
+  if(c.audioData){const audio=document.getElementById('bg-audio');if(audio){audio.innerHTML='<source src="'+c.audioData+'" type="audio/mpeg">';audio.load();}}
   document.documentElement.style.setProperty('--accent',c.accent||'#8B4559');
   document.documentElement.style.setProperty('--accent-dark',darken(c.accent||'#8B4559',0.22));
   document.documentElement.style.setProperty('--accent-light',lighten(c.accent||'#8B4559',0.35));
@@ -296,48 +280,49 @@ function applyConfig(cfg){
 function loadLocal(){try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch(e){return Object.assign({},defaults);}}
 function createParticles(){const c=document.getElementById('particles-container');if(!c)return;const s=['*','o','~','+','x'];let n=window.innerWidth<768?12:24;c.innerHTML='';for(let i=0;i<n;i++){const el=document.createElement('div');el.className='particle';el.textContent=s[Math.floor(Math.random()*s.length)];el.style.left=Math.random()*100+'vw';el.style.top=(-10-Math.random()*30)+'vh';el.style.fontSize=(12+Math.random()*16)+'px';el.style.animationDuration=(8+Math.random()*10)+'s';el.style.animationDelay=(Math.random()*8)+'s';el.style.opacity=0.35+Math.random()*0.6;c.appendChild(el);}}
 function startExperience(){
-  const overlay=document.getElementById('tap-overlay');
-  if(overlay)overlay.style.display='none';
-  const audio=document.getElementById('bg-audio');
-  const btn=document.getElementById('audio-btn');
-  if(audio){audio.play().then(function(){if(btn){btn.style.display='flex';btn.innerHTML='&#128266;';}}).catch(function(){if(btn)btn.style.display='flex';});}
+  const overlay=document.getElementById('tap-overlay');if(overlay)overlay.style.display='none';
+  const audio=document.getElementById('bg-audio');const btn=document.getElementById('audio-btn');
+  if(audio&&audio.querySelector('source')&&audio.querySelector('source').src){audio.play().then(function(){if(btn){btn.style.display='flex';btn.innerHTML='&#128266;';}}).catch(function(){if(btn)btn.style.display='flex';});}
   else{if(btn)btn.style.display='flex';}
 }
-function toggleAudio(){
-  const a=document.getElementById('bg-audio');const b=document.getElementById('audio-btn');
-  if(!a)return;
-  if(a.paused){a.play().then(function(){if(b)b.innerHTML='&#128266;';}).catch(function(){});}
-  else{a.pause();if(b)b.innerHTML='&#128263;';}
+function toggleAudio(){const a=document.getElementById('bg-audio');const b=document.getElementById('audio-btn');if(!a)return;if(a.paused){a.play().then(function(){if(b)b.innerHTML='&#128266;';}).catch(function(){});}else{a.pause();if(b)b.innerHTML='&#128263;';}}
+function toggleAcompanante(){
+  const radio=document.querySelector('input[name="asistencia"]:checked');
+  const block=document.getElementById('acompananteBlock');
+  if(!block)return;
+  if(radio&&radio.value.startsWith('Si'))block.classList.remove('hidden-block');
+  else{block.classList.add('hidden-block');const cb=document.getElementById('cantidadBlock');if(cb)cb.classList.add('hidden-block');}
+}
+function toggleCantidad(){
+  const radio=document.querySelector('input[name="acompanado"]:checked');
+  const block=document.getElementById('cantidadBlock');
+  if(!block)return;
+  if(radio&&radio.value.startsWith('Con'))block.classList.remove('hidden-block');
+  else block.classList.add('hidden-block');
 }
 function enviarRSVP(){
   const nombre=document.getElementById('rsvp-nombre').value.trim();
-  const radioChecked=document.querySelector('input[name="asistencia"]:checked');
+  const radioAsis=document.querySelector('input[name="asistencia"]:checked');
   if(!nombre){alert('Por favor escribi tu nombre.');return;}
-  if(!radioChecked){alert('Por favor indica si vas a asistir.');return;}
-  const asistencia=radioChecked.value;
+  if(!radioAsis){alert('Por favor indica si vas a asistir.');return;}
+  const asistencia=radioAsis.value;
+  const radioAcomp=document.querySelector('input[name="acompanado"]:checked');
+  const acompStr=radioAcomp?radioAcomp.value:'';
+  const cantEl=document.getElementById('rsvp-cantidad');
+  const cantStr=(radioAcomp&&radioAcomp.value.startsWith('Con')&&cantEl)?cantEl.value:'';
   document.getElementById('rsvp-form').style.display='none';
-  document.getElementById('rsvp-success').style.display='block';
+  document.getElementById('rsvp-success').classList.remove('hidden-block');
   if(_formUrl){
-    // prefill Google Form: reemplaza los entry.XXXXXX con los del form real
-    // Por ahora abre el form con los parametros como query string
-    const params=new URLSearchParams();
-    params.set('usp','pp_url');
-    // intentar prefill genericamente
-    const url = _formUrl.replace('/viewform','') + '/viewform?' + params.toString();
-    setTimeout(function(){window.open(_formUrl+'?usp=pp_url','_blank');},800);
+    setTimeout(function(){
+      let url=_formUrl;
+      if(!url.includes('?'))url+='?';
+      url+='&usp=pp_url';
+      window.open(url,'_blank');
+    },900);
   }
 }
-window.addEventListener('message',function(e){
-  if(e.data&&e.data.type==='INVITACION_CONFIG'){
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(e.data.payload));
-    applyConfig(e.data.payload);
-  }
-});
-window.addEventListener('DOMContentLoaded',function(){
-  applyConfig(loadLocal());
-  createParticles();
-  try{parent.postMessage({type:'INVITACION_READY'},'*');}catch(e){}
-});
+window.addEventListener('message',function(e){if(e.data&&e.data.type==='INVITACION_CONFIG'){localStorage.setItem(STORAGE_KEY,JSON.stringify(e.data.payload));applyConfig(e.data.payload);}});
+window.addEventListener('DOMContentLoaded',function(){applyConfig(loadLocal());createParticles();try{parent.postMessage({type:'INVITACION_READY'},'*');}catch(e){}});
 window.addEventListener('resize',createParticles);
 </script>
 </body></html>
