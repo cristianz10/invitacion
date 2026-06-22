@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitacion</title>
+  <meta property="og:title" content="Invitacion">
+  <meta property="og:description" content="Abre para ver tu invitacion">
+  <meta property="og:type" content="website">
+  <meta name="twitter:title" content="Invitacion">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -183,7 +187,7 @@
             </div>
 
             <div id="cantidadBlock" class="hidden-block mb-5">
-              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#191;Cuantas personas son en total? (incluindote)</label>
+              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#191;Cuantas personas son en total? (incluy&#233;ndote)</label>
               <input id="rsvp-cantidad" class="rsvp-input" type="number" min="1" max="20" placeholder="Ej: 2">
             </div>
 
@@ -218,7 +222,6 @@ function startCountdown(dtStr){
   clearInterval(cdInterval);
   const sec=document.getElementById('countdownSection');
   if(!dtStr){if(sec)sec.classList.add('hidden-block');return;}
-  if(!c.eventDateTime&&c.eventDate){const t=c.time?c.time.match(/(\d{1,2}):(\d{2})/):null;dtStr=c.eventDate+'T'+(t?t[0]:'20:00')+':00';}
   const target=new Date(dtStr);
   if(isNaN(target.getTime())){if(sec)sec.classList.add('hidden-block');return;}
   if(sec)sec.classList.remove('hidden-block');
@@ -240,7 +243,6 @@ function applyConfig(cfg){
   const c=Object.assign({},defaults,cfg);
   let dt=c.eventDateTime;
   if(!dt&&c.eventDate){const t=c.time?c.time.match(/(\d{1,2}):(\d{2})/):null;dt=c.eventDate+'T'+(t?t[0]:'20:00')+':00';}
-  // overlay de bienvenida
   if(c.photoData){const tp=document.getElementById('tapPhoto');if(tp){tp.src=c.photoData;tp.style.display='block';}}
   const tapName=document.getElementById('tapName');
   if(tapName&&c.name)tapName.innerHTML='&#10024; '+c.name+' &#10024;';
@@ -291,7 +293,6 @@ function enviarRSVP(){
     if(!cant||isNaN(cant)||parseInt(cant)<1){alert('Por favor indica cuantas personas son en total.');return;}
   }
   const cantidad=va?document.getElementById('rsvp-cantidad').value:'';
-  // ocultar form y mostrar gracias
   document.getElementById('rsvp-form').style.display='none';
   const success=document.getElementById('rsvp-success');
   const msg=document.getElementById('rsvp-success-msg');
