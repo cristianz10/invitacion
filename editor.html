@@ -44,7 +44,8 @@
 
         <div class="section-title">Datos del evento</div>
         <label class="inline-check"><input id="showDetails" type="checkbox" checked> Mostrar bloque de detalles</label>
-        <div class="field"><label>Fecha</label><input id="date" value="1 de Mayo, 2026"></div>
+        <div class="field"><label>Fecha (texto visible)</label><input id="date" value="1 de Mayo, 2026"></div>
+        <div class="field"><label>Fecha para cuenta regresiva ⏳</label><input id="eventDate" type="date" value=""></div>
         <div class="field"><label>Horario</label><input id="time" value="22:00 hs a 05:00 hs"></div>
         <div class="field"><label>Lugar</label><input id="venue" value="Clahe Eventos"></div>
         <div class="field"><label>Dirección</label><input id="address" value="Av. Bartolomé Mitre 2263"></div>
@@ -97,9 +98,12 @@
 const STORAGE_KEY = 'invitacionTemplateConfigV2';
 const defaults = {
   eventTitle:'Mis 15 años', name:'Isabella', tagline:'Te invito a celebrar una noche inolvidable',
-  date:'1 de Mayo, 2026', time:'22:00 hs a 05:00 hs', venue:'Clahe Eventos', address:'Av. Bartolomé Mitre 2263', city:'Avellaneda, Buenos Aires',
-  formUrl:'https://forms.gle/mMonqZjCEx5o1ZbG7', rsvpText:'Confirmar asistencia', dressCode:'Elegante', dressNote:'Colores a evitar: azul noche, verde inglés y bordo.',
-  giftTitle:'Si querés regalarme algo', giftMessage:'Podés hacerlo por transferencia a la siguiente cuenta.', alias:'', cbu:'', accountHolder:'', bank:'',
+  date:'1 de Mayo, 2026', eventDate:'', time:'22:00 hs a 05:00 hs',
+  venue:'Clahe Eventos', address:'Av. Bartolomé Mitre 2263', city:'Avellaneda, Buenos Aires',
+  formUrl:'https://forms.gle/mMonqZjCEx5o1ZbG7', rsvpText:'Confirmar asistencia',
+  dressCode:'Elegante', dressNote:'Colores a evitar: azul noche, verde inglés y bordo.',
+  giftTitle:'Si querés regalarme algo', giftMessage:'Podés hacerlo por transferencia a la siguiente cuenta.',
+  alias:'', cbu:'', accountHolder:'', bank:'',
   accent:'#8B4559', closing:'Tu presencia es muy importante para mí. ¡Te espero para compartir esta noche especial!',
   showDetails:true, showRsvp:true, showDressCode:true, showGift:false, showClosing:true,
   photoData:'', audioData:''
@@ -109,7 +113,7 @@ const $ = id => document.getElementById(id);
 let config = loadConfig();
 function loadConfig(){ try{return {...defaults,...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}}catch{return {...defaults}} }
 function saveConfig(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); }
-function fillForm(){ fieldIds.forEach(id=>{const el=$(id); if(!el) return; if(el.type==='checkbox') el.checked=!!config[id]; else el.value=config[id] ?? '';}) }
+function fillForm(){ fieldIds.forEach(id=>{ const el=$(id); if(!el) return; if(el.type==='checkbox') el.checked=!!config[id]; else el.value=config[id] ?? ''; }); }
 function sendToPreview(){ $('preview').contentWindow.postMessage({type:'INVITACION_CONFIG', payload:config}, '*'); }
 function readFileAsDataURL(file){ return new Promise((resolve,reject)=>{ const r=new FileReader(); r.onload=()=>resolve(r.result); r.onerror=reject; r.readAsDataURL(file); }); }
 fieldIds.forEach(id=>{ const el=$(id); if(!el) return; const ev = el.type==='checkbox' ? 'change' : 'input'; el.addEventListener(ev, ()=>{ config[id]=el.type==='checkbox'?el.checked:el.value; saveConfig(); sendToPreview(); }); });
