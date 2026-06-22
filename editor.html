@@ -16,6 +16,7 @@
     .field{margin-top:14px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#cbd5e1}
     .field input,.field textarea{width:100%;background:#0b1220;border:1px solid #334155;color:#f8fafc;border-radius:14px;padding:12px 14px;font:inherit}
     .field textarea{min-height:80px;resize:vertical}
+    .hint{font-size:11px;color:#64748b;margin-top:5px}
     .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
     button,.fakebtn{border:0;border-radius:14px;padding:12px 16px;font-weight:700;cursor:pointer;font-size:14px}
     .primary{background:#e11d48;color:#fff}.secondary{background:#1e293b;color:#fff;border:1px solid #334155}
@@ -50,9 +51,13 @@
 
         <div class="section-title">Fecha y lugar</div>
         <label class="inline-check"><input id="showDetails" type="checkbox" checked> Mostrar bloque detalles</label>
-        <div class="field"><label>Fecha (texto visible en la invitacion)</label><input id="date" placeholder="Ej: 1 de Mayo, 2026"></div>
-        <div class="field"><label>Fecha para cuenta regresiva &#9203; (formato calendario)</label><input id="eventDate" type="date"></div>
-        <div class="field"><label>Horario</label><input id="time" placeholder="Ej: 22:00 hs a 05:00 hs"></div>
+
+        <div class="field">
+          <label>&#128197; Fecha y hora del evento</label>
+          <input id="eventDateTime" type="datetime-local">
+          <p class="hint">Esto muestra la fecha en la invitacion Y activa la cuenta regresiva automaticamente.</p>
+        </div>
+        <div class="field"><label>Horario (texto visible, opcional)</label><input id="time" placeholder="Ej: 21:00 hs a 04:00 hs"></div>
         <div class="field"><label>Salon / lugar</label><input id="venue" placeholder="Ej: Salon XYZ"></div>
         <div class="field"><label>Direccion</label><input id="address" placeholder="Ej: Av. Corrientes 1234"></div>
         <div class="field"><label>Ciudad</label><input id="city" placeholder="Ej: Buenos Aires"></div>
@@ -96,7 +101,7 @@
           <input id="importConfig" type="file" accept="application/json" hidden>
           <button class="danger small" id="clearBtn">&#128465; Limpiar todo</button>
         </div>
-        <p class="note">"Generar index.html final" descarga el HTML con todos los datos para subir a GitHub Pages como <strong>index.html</strong>.</p>
+        <p class="note">"Generar index.html final" descarga el HTML con todos los datos para subir a GitHub Pages.</p>
       </aside>
 
       <section class="preview">
@@ -109,8 +114,8 @@
 const STORAGE_KEY = 'invitacionTemplateConfigV2';
 const defaults = {
   eventTitle:'', name:'', tagline:'',
-  date:'', eventDate:'', time:'',
-  venue:'', address:'', city:'',
+  eventDateTime:'',
+  time:'', venue:'', address:'', city:'',
   formUrl:'', rsvpText:'Confirmar asistencia',
   dressCode:'', dressNote:'',
   giftTitle:'', giftMessage:'',

@@ -32,7 +32,6 @@
     <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
     <div class="relative z-10 w-full max-w-lg mx-auto px-4 py-8">
 
-      <!-- HERO -->
       <section class="text-center mb-12">
         <div class="flex justify-center mb-6">
           <div class="flex items-center gap-3">
@@ -57,12 +56,11 @@
         </div>
       </section>
 
-      <!-- CUENTA REGRESIVA -->
       <section id="countdownSection" class="mb-12 hidden-block">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">&#8987; Cuenta regresiva</span>
           <div class="mt-6 mb-4">
-            <p class="font-elegant text-rose-100/90 text-lg sm:text-xl leading-relaxed">
+            <p id="cdText" class="font-elegant text-rose-100/90 text-lg sm:text-xl leading-relaxed">
               Faltan
               <span id="cd-days" class="font-display font-bold text-rose-200 text-2xl pulse-num">00</span> <span class="text-rose-400/80">dias,</span>
               <span id="cd-hours" class="font-display font-bold text-rose-200 text-2xl pulse-num">00</span> <span class="text-rose-400/80">horas,</span>
@@ -75,7 +73,6 @@
         </div>
       </section>
 
-      <!-- DETALLES -->
       <section id="detailsSection" class="mb-12">
         <div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-8">
@@ -99,7 +96,6 @@
         </div>
       </section>
 
-      <!-- VESTIMENTA -->
       <section id="dressSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Vestimenta</span>
@@ -113,7 +109,6 @@
         </div>
       </section>
 
-      <!-- REGALO -->
       <section id="giftSection" class="mb-12 hidden-block">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Regalo</span>
@@ -128,7 +123,6 @@
         </div>
       </section>
 
-      <!-- CIERRE -->
       <section id="closingSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Mensaje</span>
@@ -137,7 +131,6 @@
         </div>
       </section>
 
-      <!-- RSVP -->
       <section id="rsvpSection" class="pb-10">
         <div class="text-center">
           <a id="rsvpBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-elegant inline-flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));">
@@ -154,8 +147,8 @@
 const STORAGE_KEY = 'invitacionTemplateConfigV2';
 const defaults = {
   eventTitle:'', name:'', tagline:'',
-  date:'', eventDate:'', time:'',
-  venue:'', address:'', city:'',
+  eventDateTime:'',
+  time:'', venue:'', address:'', city:'',
   formUrl:'', rsvpText:'Confirmar asistencia',
   dressCode:'', dressNote:'',
   giftTitle:'', giftMessage:'',
@@ -170,19 +163,28 @@ function lighten(hex,a){const{r,g,b}=hexToRgb(hex);const f=v=>Math.min(255,Math.
 function txt(id,v){const el=document.getElementById(id);if(el)el.textContent=v||'';}
 function show(id,ok){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!ok);}
 function showRow(id,val){const el=document.getElementById(id);if(el)el.classList.toggle('hidden-block',!val);}
-
+function formatDateForDisplay(dtStr){
+  if(!dtStr) return '';
+  const dt=new Date(dtStr);
+  if(isNaN(dt.getTime())) return dtStr;
+  return dt.toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+}
+function formatTimeForDisplay(dtStr){
+  if(!dtStr) return '';
+  const dt=new Date(dtStr);
+  if(isNaN(dt.getTime())) return '';
+  return dt.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})+'hs';
+}
 let cdInterval=null;
-function startCountdown(dateStr,timeStr){
+function startCountdown(dtStr){
   clearInterval(cdInterval);
   const sec=document.getElementById('countdownSection');
-  if(!dateStr){if(sec)sec.classList.add('hidden-block');return;}
-  let t='20:00';
-  if(timeStr){const m=timeStr.match(/(\d{1,2}):(\d{2})/);if(m)t=m[0];}
-  const target=new Date(dateStr+'T'+t+':00');
+  if(!dtStr){if(sec)sec.classList.add('hidden-block');return;}
+  const target=new Date(dtStr);
   if(isNaN(target.getTime())){if(sec)sec.classList.add('hidden-block');return;}
   if(sec)sec.classList.remove('hidden-block');
   const done=document.getElementById('cd-done');
-  const cdText=sec?sec.querySelector('.font-elegant'):null;
+  const cdText=document.getElementById('cdText');
   function pad(n){return String(n).padStart(2,'0');}
   function tick(){
     const diff=target-Date.now();
@@ -206,11 +208,13 @@ function startCountdown(dateStr,timeStr){
   tick();
   cdInterval=setInterval(tick,1000);
 }
-
 function applyConfig(cfg){
   const c=Object.assign({},defaults,cfg);
   txt('eventTitleEl',c.eventTitle); txt('nameEl',c.name); txt('taglineEl',c.tagline);
-  txt('dateEl',c.date); txt('timeEl',c.time);
+  const displayDate = formatDateForDisplay(c.eventDateTime);
+  const displayTime = formatTimeForDisplay(c.eventDateTime);
+  txt('dateEl', displayDate);
+  txt('timeEl', c.time || (displayTime ? 'Desde las '+displayTime : ''));
   txt('venueEl',c.venue); txt('addressEl',c.address); txt('cityEl',c.city);
   txt('dressCodeEl',c.dressCode); txt('dressNoteEl',c.dressNote);
   txt('giftTitleEl',c.giftTitle); txt('giftMessageEl',c.giftMessage);
@@ -228,7 +232,7 @@ function applyConfig(cfg){
   document.documentElement.style.setProperty('--accent',c.accent);
   document.documentElement.style.setProperty('--accent-dark',darken(c.accent,0.22));
   document.documentElement.style.setProperty('--accent-light',lighten(c.accent,0.35));
-  startCountdown(c.eventDate,c.time);
+  startCountdown(c.eventDateTime);
 }
 function loadLocal(){try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}'));}catch(e){return Object.assign({},defaults);}}
 function createParticles(){const c=document.getElementById('particles-container');if(!c)return;const s=['*','o','~','+','x'];let n=window.innerWidth<768?12:24;c.innerHTML='';for(let i=0;i<n;i++){const el=document.createElement('div');el.className='particle';el.textContent=s[Math.floor(Math.random()*s.length)];el.style.left=Math.random()*100+'vw';el.style.top=(-10-Math.random()*30)+'vh';el.style.fontSize=(12+Math.random()*16)+'px';el.style.animationDuration=(8+Math.random()*10)+'s';el.style.animationDelay=(Math.random()*8)+'s';el.style.opacity=0.35+Math.random()*0.6;c.appendChild(el);}}
