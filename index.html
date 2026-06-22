@@ -199,7 +199,7 @@
             </div>
 
             <div class="mb-5">
-              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#127757; Mensaje para Isabella (opcional)</label>
+              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#127757; Mensaje (opcional)</label>
               <textarea id="rsvp-mensaje" class="rsvp-input" rows="3" placeholder="Escribi un mensaje..."></textarea>
             </div>
 
@@ -309,7 +309,6 @@ function enviarRSVP(){
   }
   const mensaje=document.getElementById('rsvp-mensaje').value.trim();
 
-  // Envio silencioso a Google Forms
   const formData=new FormData();
   formData.append('entry.1075135171',nombre);
   formData.append('entry.1331914687',va?'Si':'No');
@@ -317,7 +316,6 @@ function enviarRSVP(){
   formData.append('entry.2088091130',mensaje);
   fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:formData}).catch(function(){});
 
-  // Mostrar confirmacion visual
   document.getElementById('rsvp-form').style.display='none';
   const success=document.getElementById('rsvp-success');
   const msg=document.getElementById('rsvp-success-msg');
