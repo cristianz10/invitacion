@@ -119,64 +119,78 @@
         <div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-8">
             <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Te invito a celebrar</span>
-            <h3 class="font-script text-3xl text-rose-200 mt-2">Los detalles</h3>
+            <h3 class="font-script text-3xl text-rose-200 mt-2">Detalles del evento</h3>
           </div>
-          <div class="space-y-6">
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128197;</div>
-              <div><p class="font-display text-rose-300 font-medium">Fecha</p><p id="dateEl" class="font-elegant text-rose-100/90 text-lg"></p></div>
+          <div class="space-y-4 font-elegant text-rose-100/90 text-lg">
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-950/30">
+              <span class="text-2xl mt-0.5">&#128197;</span>
+              <div>
+                <p class="text-rose-400/70 text-xs tracking-widest uppercase mb-1">Fecha</p>
+                <p id="dateEl" class="font-display font-medium"></p>
+              </div>
             </div>
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128345;</div>
-              <div><p class="font-display text-rose-300 font-medium">Horario</p><p id="timeEl" class="font-elegant text-rose-100/90 text-lg"></p></div>
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-950/30">
+              <span class="text-2xl mt-0.5">&#9200;</span>
+              <div>
+                <p class="text-rose-400/70 text-xs tracking-widest uppercase mb-1">Hora</p>
+                <p id="timeEl" class="font-display font-medium"></p>
+              </div>
             </div>
-            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-700 to-rose-800 flex items-center justify-center text-2xl shrink-0">&#128205;</div>
-              <div><p id="venueEl" class="font-display text-rose-300 font-medium"></p><p id="addressEl" class="font-elegant text-rose-100/90 text-lg"></p><p id="cityEl" class="font-elegant text-rose-400/70 text-sm mt-1"></p></div>
+            <div class="flex items-start gap-4 p-4 rounded-2xl bg-rose-950/30">
+              <span class="text-2xl mt-0.5">&#127968;</span>
+              <div>
+                <p class="text-rose-400/70 text-xs tracking-widest uppercase mb-1">Lugar</p>
+                <p id="venueEl" class="font-display font-medium"></p>
+                <p id="addressEl" class="text-rose-200/70 text-base mt-1"></p>
+                <p id="cityEl" class="text-rose-200/70 text-base"></p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="dressSection" class="mb-12">
-        <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
-          <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Vestimenta</span>
-          <h3 class="font-script text-3xl text-rose-200 mt-2">Codigo de vestimenta</h3>
-          <div class="flex justify-center my-7">
-            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-rose-500/40 bg-rose-800/30">
-              <span class="text-xl">&#128087;</span><span id="dressCodeEl" class="font-display text-rose-100 text-xl tracking-widest"></span><span class="text-xl">&#129333;</span>
-            </div>
+      <section id="dressSection" class="mb-12 hidden-block">
+        <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
+          <div class="text-center mb-6">
+            <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">&#128084; Vestimenta</span>
+            <h3 id="dressCodeEl" class="font-script text-3xl text-rose-200 mt-2"></h3>
+            <p id="dressNoteEl" class="font-elegant text-rose-100/75 mt-3 text-lg"></p>
           </div>
-          <p id="dressNoteEl" class="font-elegant text-rose-100/80 text-lg"></p>
         </div>
       </section>
 
       <section id="giftSection" class="mb-12 hidden-block">
-        <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
-          <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Regalo</span>
-          <h3 id="giftTitleEl" class="font-script text-3xl text-rose-200 mt-2"></h3>
-          <p id="giftMessageEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5"></p>
-          <div class="mt-6 space-y-3 text-left max-w-md mx-auto">
-            <div id="aliasRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Alias</p><p id="aliasEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div>
-            <div id="cbuRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">CBU</p><p id="cbuEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div>
-            <div id="holderRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Titular</p><p id="accountHolderEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div>
-            <div id="bankRow" class="p-4 rounded-2xl bg-rose-900/20 border border-rose-800/20 hidden-block"><p class="font-display text-rose-300">Banco</p><p id="bankEl" class="font-elegant text-rose-100/90 text-lg break-all"></p></div>
+        <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
+          <div class="text-center mb-6">
+            <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">&#127873; Regalos</span>
+            <h3 id="giftTitleEl" class="font-script text-3xl text-rose-200 mt-2"></h3>
+            <p id="giftMessageEl" class="font-elegant text-rose-100/75 mt-3 text-lg"></p>
+          </div>
+          <div class="space-y-2 font-elegant text-base text-rose-100/80 mt-4">
+            <div id="aliasRow" class="hidden-block flex items-center gap-3 p-3 rounded-xl bg-rose-950/30">
+              <span class="text-rose-400/70 text-sm uppercase tracking-widest">Alias:</span>
+              <span id="aliasEl" class="font-display font-medium text-rose-200"></span>
+            </div>
+            <div id="cbuRow" class="hidden-block flex items-center gap-3 p-3 rounded-xl bg-rose-950/30">
+              <span class="text-rose-400/70 text-sm uppercase tracking-widest">CBU:</span>
+              <span id="cbuEl" class="font-display font-medium text-rose-200 break-all"></span>
+            </div>
+            <div id="holderRow" class="hidden-block flex items-center gap-3 p-3 rounded-xl bg-rose-950/30">
+              <span class="text-rose-400/70 text-sm uppercase tracking-widest">Titular:</span>
+              <span id="accountHolderEl" class="font-display font-medium text-rose-200"></span>
+            </div>
+            <div id="bankRow" class="hidden-block flex items-center gap-3 p-3 rounded-xl bg-rose-950/30">
+              <span class="text-rose-400/70 text-sm uppercase tracking-widest">Banco:</span>
+              <span id="bankEl" class="font-display font-medium text-rose-200"></span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="closingSection" class="mb-12">
-        <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
-          <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Mensaje</span>
-          <h3 class="font-script text-3xl text-rose-200 mt-2">Una noche especial</h3>
-          <p id="closingEl" class="font-elegant text-rose-100/90 text-xl leading-relaxed mt-5"></p>
-        </div>
-      </section>
-
-      <section id="rsvpSection" class="pb-10">
+      <section id="rsvpSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
-          <div class="text-center mb-6">
-            <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">Confirmacion</span>
+          <div class="text-center mb-8">
+            <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">&#10084;&#65039; RSVP</span>
             <h3 class="font-script text-3xl text-rose-200 mt-2">&#10084;&#65039; Confirmar asistencia</h3>
           </div>
 
@@ -190,25 +204,27 @@
               <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#191;Vas a asistir?</label>
               <div class="rsvp-radio-group">
                 <label class="rsvp-radio-label">
-                  <input type="radio" name="asistencia" value="si" onchange="onAsistenciaChange()">
+                  <input type="radio" name="asistencia" value="Si" onchange="onAsistenciaChange()">
                   &#127881; Si, voy a ir
                 </label>
                 <label class="rsvp-radio-label">
-                  <input type="radio" name="asistencia" value="no" onchange="onAsistenciaChange()">
+                  <input type="radio" name="asistencia" value="No" onchange="onAsistenciaChange()">
                   &#128532; No voy a poder
                 </label>
               </div>
             </div>
 
             <div id="cantidadBlock" class="hidden-block mb-5">
-              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#191;Cuantas personas son en total? (incluy&#233;ndote)</label>
+              <label class="font-display text-rose-300 text-sm font-medium block mb-1">&#191;Con cuantos acompañantes vas? (ademas de vos)</label>
               <div class="rsvp-radio-group" id="cantidad-opciones">
                 <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="Yo solo"> Yo solo</label>
-                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="2"> 2</label>
-                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="3"> 3</label>
-                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="4"> 4</label>
-                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="5"> 5</label>
-                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="6"> 6</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+1"> +1</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+2"> +2</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+3"> +3</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+4"> +4</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+5"> +5</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+6"> +6</label>
+                <label class="rsvp-radio-label"><input type="radio" name="cantidad" value="+7"> +7</label>
               </div>
             </div>
 
@@ -226,6 +242,12 @@
             <p class="font-script text-4xl text-rose-200 mb-3">&#10024; Gracias! &#10024;</p>
             <p id="rsvp-success-msg" class="font-elegant text-rose-100/80 text-xl">Tu confirmacion fue recibida.</p>
           </div>
+        </div>
+      </section>
+
+      <section id="closingSection" class="mb-12 hidden-block">
+        <div class="text-center">
+          <p id="closingEl" class="font-script text-3xl text-rose-300"></p>
         </div>
       </section>
 
@@ -287,12 +309,12 @@ function applyConfig(cfg){
   show('giftSection',c.showGift);show('closingSection',c.showClosing);show('rsvpSection',c.showRsvp);
   showRow('aliasRow',c.alias);showRow('cbuRow',c.cbu);showRow('holderRow',c.accountHolder);showRow('bankRow',c.bank);
   if(c.photoData){const img=document.getElementById('mainPhoto');if(img)img.src=c.photoData;}
-  if(c.audioData){
-    const audio=document.getElementById('bg-audio');
-    if(audio){
-      audio.src=c.audioData;
-      audio.load();
-    }
+  /* AUDIO: usar audioData del editor si existe, sino el MP3 del repositorio */
+  const audioEl=document.getElementById('bg-audio');
+  if(audioEl){
+    const REPO_AUDIO='https://raw.githubusercontent.com/cristianz10/invitacion/main/BLACKPINK%20-%20Tally%20(Official%20Audio).mp3';
+    audioEl.src=c.audioData||REPO_AUDIO;
+    audioEl.load();
   }
   document.documentElement.style.setProperty('--accent',c.accent||'#8B4559');
   document.documentElement.style.setProperty('--accent-dark',darken(c.accent||'#8B4559',0.22));
@@ -305,7 +327,7 @@ function createParticles(){const c=document.getElementById('particles-container'
 function playAudio(){
   const audio=document.getElementById('bg-audio');
   const btn=document.getElementById('audio-btn');
-  if(!audio||(!audio.src&&!audio.currentSrc))return;
+  if(!audio)return;
   audio.play().then(function(){
     if(btn){btn.style.display='flex';btn.innerHTML='&#128266;';}
   }).catch(function(err){
@@ -336,7 +358,7 @@ function onAsistenciaChange(){
   const radio=document.querySelector('input[name="asistencia"]:checked');
   const block=document.getElementById('cantidadBlock');
   if(!block)return;
-  if(radio&&radio.value==='si')block.classList.remove('hidden-block');
+  if(radio&&radio.value==='Si') block.classList.remove('hidden-block');
   else block.classList.add('hidden-block');
 }
 
@@ -345,7 +367,7 @@ function enviarRSVP(){
   const radioAsis=document.querySelector('input[name="asistencia"]:checked');
   if(!nombre){alert('Por favor escribi tu nombre.');return;}
   if(!radioAsis){alert('Por favor indica si vas a asistir.');return;}
-  const va=(radioAsis.value==='si');
+  const va=(radioAsis.value==='Si');
   let cantidadVal=null;
   if(va){
     const radioCant=document.querySelector('input[name="cantidad"]:checked');
@@ -355,11 +377,10 @@ function enviarRSVP(){
   const mensaje=document.getElementById('rsvp-mensaje').value.trim();
 
   const formData=new FormData();
-  formData.append('entry.1075135171',nombre);
-  formData.append('entry.1331914687',va?'Si':'No');
-  // Solo enviamos acompañantes si va a asistir
-  if(va&&cantidadVal){formData.append('entry.927343248',cantidadVal);}
-  if(mensaje){formData.append('entry.2088091130',mensaje);}
+  formData.append('entry.176299239',nombre);
+  formData.append('entry.1898812483',va?'Si':'No');
+  if(va&&cantidadVal){formData.append('entry.466650996',cantidadVal);}
+  if(mensaje){formData.append('entry.1097825735',mensaje);}
   fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:formData}).catch(function(){});
 
   document.getElementById('rsvp-form').style.display='none';
@@ -367,7 +388,7 @@ function enviarRSVP(){
   const msg=document.getElementById('rsvp-success-msg');
   if(success)success.classList.remove('hidden-block');
   if(msg){
-    if(va)msg.textContent='Confirmado para '+cantidadVal+(cantidadVal==='Yo solo'?'':' personas')+'! Te esperamos.';
+    if(va){if(cantidadVal==='Yo solo')msg.textContent='Confirmado para 1 persona! Te esperamos.';else msg.textContent='Confirmado para vos y '+cantidadVal+' personas mas! Te esperamos.';}
     else msg.textContent='Gracias por avisarnos. Te vamos a extranar!';
   }
 }
