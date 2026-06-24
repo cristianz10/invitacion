@@ -200,8 +200,8 @@
 </div>
 
 <script>
-var FORM='https://docs.google.com/forms/d/e/1FAIpQLSeG0IeQR4JpNIM8qpzhUq-dIlgFc4ButAktVLzkK77NzzKvmA/formResponse';
-var EVT=new Date('2026-08-29T21:00:00');
+const FORM_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSeG0IeQR4JpNIM8qpzhUq-dIlgFc4ButAktVLzkK77NzzKvmA/formResponse';
+const EVT=new Date('2026-08-29T21:00:00');
 
 function createParticles(){
   var c=document.getElementById('particles-container');if(!c)return;
@@ -255,28 +255,32 @@ function onAsistenciaChange(){
 
 function enviarRSVP(){
   var nombre=document.getElementById('rsvp-nombre').value.trim();
-  var asis=document.querySelector('input[name="asistencia"]:checked');
+  var radioAsis=document.querySelector('input[name="asistencia"]:checked');
   if(!nombre){alert('Por favor escribí tu nombre.');return;}
-  if(!asis){alert('Por favor indicá si vas a asistir.');return;}
-  var va=asis.value==='Si',cant=null;
+  if(!radioAsis){alert('Por favor indicá si vas a asistir.');return;}
+  var va=(radioAsis.value==='si' || radioAsis.value==='Si' || radioAsis.value==='SI');
+  var cantidadVal='No va a asistir';
   if(va){
-    var cr=document.querySelector('input[name="cantidad"]:checked');
-    if(!cr){alert('Por favor indicá cuántas personas son.');return;}
-    cant=cr.value;
+    var radioCant=document.querySelector('input[name="cantidad"]:checked');
+    if(!radioCant){alert('Por favor indicá cuántas personas son.');return;}
+    cantidadVal=radioCant.value;
   }
-  var msg=document.getElementById('rsvp-mensaje').value.trim();
-  var fd=new FormData();
-  fd.append('entry.176299239',nombre);
-  fd.append('entry.1898812483',va?'Si':'No');
-  if(va&&cant)fd.append('entry.466650996',cant);
-  if(msg)fd.append('entry.1097825735',msg);
-  fetch(FORM,{method:'POST',mode:'no-cors',body:fd}).catch(function(){});
+  var mensaje=document.getElementById('rsvp-mensaje').value.trim();
+
+  var formData=new FormData();
+  formData.append('entry.1075135171',nombre);
+  formData.append('entry.1331914687',va?'Si':'No');
+  formData.append('entry.927343248',cantidadVal);
+  formData.append('entry.2088091130',mensaje);
+  fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:formData}).catch(function(){});
+
   document.getElementById('rsvp-form').style.display='none';
-  var suc=document.getElementById('rsvp-success'),smsg=document.getElementById('rsvp-success-msg');
-  if(suc)suc.classList.remove('hidden-block');
-  if(smsg){
-    if(va)smsg.textContent=cant==='Yo solo'?'¡Confirmado para 1 persona! Te esperamos 🎉':'¡Confirmado para vos y '+cant+' más! Te esperamos 🎉';
-    else smsg.textContent='Gracias por avisarnos. ¡Te vamos a extrañar! 💕';
+  var success=document.getElementById('rsvp-success');
+  var msg=document.getElementById('rsvp-success-msg');
+  if(success)success.classList.remove('hidden-block');
+  if(msg){
+    if(va)msg.textContent=(cantidadVal==='Yo solo')?'Confirmado para 1 persona! Te esperamos 🎉':'Confirmado para '+cantidadVal+'! Te esperamos 🎉';
+    else msg.textContent='Gracias por avisarnos. Te vamos a extrañar!';
   }
 }
 
