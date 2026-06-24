@@ -6,7 +6,6 @@
   <meta property="og:title" content="Cumpleaños Máxima y Virginia">
   <meta property="og:description" content="Abre para ver tu invitación">
   <meta property="og:type" content="website">
-  <meta name="twitter:title" content="Cumpleaños Máxima y Virginia">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -37,8 +36,6 @@
     .rsvp-radio-label{display:flex;align-items:center;gap:8px;background:rgba(139,69,89,.15);border:1px solid rgba(139,69,89,.35);border-radius:12px;padding:10px 18px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-size:1rem;color:#f0d0d8;transition:all .2s;}
     .rsvp-radio-label:has(input:checked){background:rgba(139,69,89,.45);border-color:#D4A5A5;}
     .rsvp-radio-label input{accent-color:#D4A5A5;}
-    input[type=number].rsvp-input{-moz-appearance:textfield;}
-    input[type=number].rsvp-input::-webkit-outer-spin-button,input[type=number].rsvp-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
     @keyframes cardReveal{
       0%{opacity:0;transform:perspective(900px) rotateY(-18deg) scale(0.88) translateY(30px);}
       60%{opacity:1;transform:perspective(900px) rotateY(4deg) scale(1.02) translateY(-6px);}
@@ -60,9 +57,9 @@
   <div id="tap-overlay">
     <div class="tap-bg"></div>
     <div class="tap-content">
-      <img class="tap-photo" src="https://raw.githubusercontent.com/cristianz10/invitacion/main/foto.png" alt="Máxima y Virginia">
+      <img class="tap-photo" id="tap-photo-img" src="" alt="Máxima y Virginia">
       <h2>✨ Máxima &amp; Virginia ✨</h2>
-      <p>Toca para abrir tu invitación</p>
+      <p>Tocá para abrir tu invitación</p>
       <button class="tap-btn" onclick="startExperience()">🎁 Abrir invitación</button>
     </div>
   </div>
@@ -74,7 +71,6 @@
     <div id="particles-container" class="fixed inset-0 pointer-events-none overflow-hidden z-50"></div>
     <div class="relative z-10 w-full max-w-lg mx-auto px-4 py-8">
 
-      <!-- ENCABEZADO -->
       <section class="text-center mb-12">
         <div class="flex justify-center mb-6">
           <div class="flex items-center gap-3">
@@ -89,7 +85,6 @@
         </div>
         <p class="font-elegant text-lg text-rose-100/85 mb-8">Desde España hasta Argentina, a celebrar juntos ✈️🇦🇷</p>
 
-        <!-- FOTO -->
         <div class="relative mx-auto w-64 h-80 sm:w-72 sm:h-96 mb-8 card-animate">
           <div class="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2 border-rose-400/60"></div>
           <div class="absolute -top-3 -right-3 w-8 h-8 border-t-2 border-r-2 border-rose-400/60"></div>
@@ -97,13 +92,12 @@
           <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2 border-rose-400/60"></div>
           <div class="gradient-border p-1 rounded-2xl h-full">
             <div class="photo-frame rounded-xl h-full overflow-hidden bg-gradient-to-br from-rose-900/40 to-rose-950/60">
-              <img alt="Máxima y Virginia" class="w-full h-full object-cover object-top" src="https://raw.githubusercontent.com/cristianz10/invitacion/main/foto.png" loading="lazy">
+              <img id="main-photo" alt="Máxima y Virginia" class="w-full h-full object-cover object-top" src="">
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CUENTA REGRESIVA -->
       <section id="countdownSection" class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30 text-center">
           <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">⏳ Cuenta regresiva</span>
@@ -121,7 +115,6 @@
         </div>
       </section>
 
-      <!-- DETALLES DEL EVENTO -->
       <section class="mb-12">
         <div class="relative bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-8">
@@ -148,8 +141,7 @@
               <div>
                 <p class="text-rose-400/70 text-xs tracking-widest uppercase mb-1">Lugar</p>
                 <p class="font-display font-medium">Fiestas Presente</p>
-                <p class="text-rose-200/70 text-base mt-1">Laprida 3027</p>
-                <p class="text-rose-200/70 text-base">Quilmes, Buenos Aires</p>
+                <p class="text-rose-200/70 text-base mt-1">Laprida 3027, Quilmes</p>
                 <a href="https://maps.app.goo.gl/CJCRK1z9i4XcLNVT6" target="_blank" rel="noopener noreferrer" class="map-btn mt-3 inline-flex">
                   <span>📍</span><span>Ver ubicación en el mapa</span>
                 </a>
@@ -159,7 +151,6 @@
         </div>
       </section>
 
-      <!-- VESTIMENTA -->
       <section class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center">
@@ -170,30 +161,22 @@
         </div>
       </section>
 
-      <!-- RSVP -->
       <section class="mb-12">
         <div class="bg-gradient-to-br from-rose-950/50 to-rose-900/30 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-rose-800/30">
           <div class="text-center mb-8">
             <span class="text-rose-400/60 text-sm tracking-widest font-elegant uppercase">❤️ RSVP</span>
             <h3 class="font-script text-3xl text-rose-200 mt-2">❤️ Confirmar asistencia</h3>
           </div>
-
           <div id="rsvp-form">
             <div class="mb-5">
               <label class="font-display text-rose-300 text-sm font-medium block mb-1">Tu nombre completo</label>
-              <input id="rsvp-nombre" class="rsvp-input" type="text" placeholder="Escribi tu nombre...">
+              <input id="rsvp-nombre" class="rsvp-input" type="text" placeholder="Escribí tu nombre...">
             </div>
             <div class="mb-5">
               <label class="font-display text-rose-300 text-sm font-medium block mb-1">¿Vas a asistir?</label>
               <div class="rsvp-radio-group">
-                <label class="rsvp-radio-label">
-                  <input type="radio" name="asistencia" value="Si" onchange="onAsistenciaChange()">
-                  🎉 Sí, voy a ir
-                </label>
-                <label class="rsvp-radio-label">
-                  <input type="radio" name="asistencia" value="No" onchange="onAsistenciaChange()">
-                  😔 No voy a poder
-                </label>
+                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="Si" onchange="onAsistenciaChange()">🎉 Sí, voy a ir</label>
+                <label class="rsvp-radio-label"><input type="radio" name="asistencia" value="No" onchange="onAsistenciaChange()">😔 No voy a poder</label>
               </div>
             </div>
             <div id="cantidadBlock" class="hidden-block mb-5">
@@ -211,13 +194,12 @@
             </div>
             <div class="mb-5">
               <label class="font-display text-rose-300 text-sm font-medium block mb-1">🌎 Mensaje (opcional)</label>
-              <textarea id="rsvp-mensaje" class="rsvp-input" rows="3" placeholder="Escribi un mensaje..."></textarea>
+              <textarea id="rsvp-mensaje" class="rsvp-input" rows="3" placeholder="Escribí un mensaje..."></textarea>
             </div>
             <button onclick="enviarRSVP()" class="btn-elegant w-full flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl mt-2" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));">
               <span>💌</span><span>Confirmar asistencia</span>
             </button>
           </div>
-
           <div id="rsvp-success" class="text-center py-6 hidden-block">
             <p class="font-script text-4xl text-rose-200 mb-3">✨ ¡Gracias! ✨</p>
             <p id="rsvp-success-msg" class="font-elegant text-rose-100/80 text-xl">Tu confirmación fue recibida.</p>
@@ -225,7 +207,6 @@
         </div>
       </section>
 
-      <!-- CIERRE -->
       <section class="mb-12">
         <div class="text-center">
           <p class="font-script text-3xl text-rose-300">¡Las esperamos con todo el amor! 🥂✨</p>
@@ -236,14 +217,18 @@
   </div>
 
 <script>
-const FORM_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSeG0IeQR4JpNIM8qpzhUq-dIlgFc4ButAktVLzkK77NzzKvmA/formResponse';
-const EVENT_DATE=new Date('2026-08-29T21:00:00');
+var FOTO_SRC='FOTO_PLACEHOLDER';
+document.getElementById('tap-photo-img').src=FOTO_SRC;
+document.getElementById('main-photo').src=FOTO_SRC;
+
+var FORM_ACTION='https://docs.google.com/forms/d/e/1FAIpQLSeG0IeQR4JpNIM8qpzhUq-dIlgFc4ButAktVLzkK77NzzKvmA/formResponse';
+var EVENT_DATE=new Date('2026-08-29T21:00:00');
 
 function createParticles(){
-  const c=document.getElementById('particles-container');if(!c)return;
-  const s=['*','o','~','+','x'];let n=window.innerWidth<768?12:24;c.innerHTML='';
-  for(let i=0;i<n;i++){
-    const el=document.createElement('div');el.className='particle';
+  var c=document.getElementById('particles-container');if(!c)return;
+  var s=['*','o','~','+','x'];var n=window.innerWidth<768?12:24;c.innerHTML='';
+  for(var i=0;i<n;i++){
+    var el=document.createElement('div');el.className='particle';
     el.textContent=s[Math.floor(Math.random()*s.length)];
     el.style.left=Math.random()*100+'vw';el.style.top=(-10-Math.random()*30)+'vh';
     el.style.fontSize=(12+Math.random()*16)+'px';el.style.animationDuration=(8+Math.random()*10)+'s';
@@ -252,87 +237,87 @@ function createParticles(){
   }
 }
 
-let cdInterval=null;
+var cdInterval=null;
 function startCountdown(){
-  const sec=document.getElementById('countdownSection');
-  const done=document.getElementById('cd-done'),cdText=document.getElementById('cdText');
+  var done=document.getElementById('cd-done'),cdText=document.getElementById('cdText');
   function pad(n){return String(n).padStart(2,'0');}
   function tick(){
-    const diff=EVENT_DATE-Date.now();
+    var diff=EVENT_DATE-Date.now();
     if(diff<=0){
-      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){const el=document.getElementById(id);if(el)el.textContent='00';});
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent='00';});
       if(done)done.classList.remove('hidden');if(cdText)cdText.style.display='none';
       clearInterval(cdInterval);return;
     }
     if(done)done.classList.add('hidden');if(cdText)cdText.style.display='';
-    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    const cd=document.getElementById('cd-days');if(cd)cd.textContent=pad(d);
-    const ch=document.getElementById('cd-hours');if(ch)ch.textContent=pad(h);
-    const cm=document.getElementById('cd-mins');if(cm)cm.textContent=pad(m);
-    const cs=document.getElementById('cd-secs');if(cs)cs.textContent=pad(s);
+    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    var cd=document.getElementById('cd-days');if(cd)cd.textContent=pad(d);
+    var ch=document.getElementById('cd-hours');if(ch)ch.textContent=pad(h);
+    var cm=document.getElementById('cd-mins');if(cm)cm.textContent=pad(m);
+    var cs=document.getElementById('cd-secs');if(cs)cs.textContent=pad(s);
   }
   tick();cdInterval=setInterval(tick,1000);
 }
 
 function playAudio(){
-  const audio=document.getElementById('bg-audio');
-  const btn=document.getElementById('audio-btn');
+  var audio=document.getElementById('bg-audio');
+  var btn=document.getElementById('audio-btn');
   if(!audio)return;
-  audio.play().then(function(){
-    if(btn){btn.style.display='flex';btn.innerHTML='🔊';}
-  }).catch(function(){
-    if(btn){btn.style.display='flex';btn.innerHTML='🔊';}
-  });
+  audio.play().then(function(){if(btn){btn.style.display='flex';btn.innerHTML='🔊';}}).catch(function(){if(btn){btn.style.display='flex';btn.innerHTML='🔊';}});
 }
 
 function startExperience(){
-  const overlay=document.getElementById('tap-overlay');if(overlay)overlay.style.display='none';
-  const btn=document.getElementById('audio-btn');if(btn)btn.style.display='flex';
+  var overlay=document.getElementById('tap-overlay');if(overlay)overlay.style.display='none';
+  var btn=document.getElementById('audio-btn');if(btn)btn.style.display='flex';
   playAudio();
 }
 
 function toggleAudio(){
-  const a=document.getElementById('bg-audio');
-  const b=document.getElementById('audio-btn');
+  var a=document.getElementById('bg-audio');var b=document.getElementById('audio-btn');
   if(!a)return;
   if(a.paused){a.play().then(function(){if(b)b.innerHTML='🔊';}).catch(function(){});}
   else{a.pause();if(b)b.innerHTML='🔇';}
 }
 
 function onAsistenciaChange(){
-  const radio=document.querySelector('input[name="asistencia"]:checked');
-  const block=document.getElementById('cantidadBlock');
+  var radio=document.querySelector('input[name="asistencia"]:checked');
+  var block=document.getElementById('cantidadBlock');
   if(!block)return;
   if(radio&&radio.value==='Si')block.classList.remove('hidden-block');
   else block.classList.add('hidden-block');
 }
 
 function enviarRSVP(){
-  const nombre=document.getElementById('rsvp-nombre').value.trim();
-  const radioAsis=document.querySelector('input[name="asistencia"]:checked');
-  if(!nombre){alert('Por favor escribi tu nombre.');return;}
-  if(!radioAsis){alert('Por favor indica si vas a asistir.');return;}
-  const va=(radioAsis.value==='Si');
-  let cantidadVal=null;
+  var nombre=document.getElementById('rsvp-nombre').value.trim();
+  var radioAsis=document.querySelector('input[name="asistencia"]:checked');
+  if(!nombre){alert('Por favor escribí tu nombre.');return;}
+  if(!radioAsis){alert('Por favor indicá si vas a asistir.');return;}
+  var va=(radioAsis.value==='Si');
+  var cantidadVal=null;
   if(va){
-    const radioCant=document.querySelector('input[name="cantidad"]:checked');
-    if(!radioCant){alert('Por favor indica cuántas personas son.');return;}
+    var radioCant=document.querySelector('input[name="cantidad"]:checked');
+    if(!radioCant){alert('Por favor indicá cuántas personas son.');return;}
     cantidadVal=radioCant.value;
   }
-  const mensaje=document.getElementById('rsvp-mensaje').value.trim();
-  const formData=new FormData();
+  var mensaje=document.getElementById('rsvp-mensaje').value.trim();
+  var formData=new FormData();
   formData.append('entry.176299239',nombre);
   formData.append('entry.1898812483',va?'Si':'No');
   if(va&&cantidadVal){formData.append('entry.466650996',cantidadVal);}
   if(mensaje){formData.append('entry.1097825735',mensaje);}
+  // Envío completamente silencioso — no abre ninguna ventana
   fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:formData}).catch(function(){});
+  // Mostrar éxito de inmediato
   document.getElementById('rsvp-form').style.display='none';
-  const success=document.getElementById('rsvp-success');
-  const msg=document.getElementById('rsvp-success-msg');
+  var success=document.getElementById('rsvp-success');
+  var msg=document.getElementById('rsvp-success-msg');
   if(success)success.classList.remove('hidden-block');
   if(msg){
-    if(va){if(cantidadVal==='Yo solo')msg.textContent='¡Confirmado para 1 persona! Te esperamos.';else msg.textContent='¡Confirmado para vos y '+cantidadVal+' personas más! Te esperamos.';}
-    else msg.textContent='Gracias por avisarnos. ¡Te vamos a extrañar!';
+    if(va){
+      if(cantidadVal==='Yo solo')msg.textContent='¡Confirmado para 1 persona! Te esperamos 🎉';
+      else msg.textContent='¡Confirmado para vos y '+cantidadVal+' más! Te esperamos 🎉';
+    }else{
+      msg.textContent='Gracias por avisarnos. ¡Te vamos a extrañar! 💕';
+    }
   }
 }
 
