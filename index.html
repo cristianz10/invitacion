@@ -259,7 +259,7 @@ function enviarRSVP(){
   if(!nombre){alert('Por favor escribí tu nombre.');return;}
   if(!radioAsis){alert('Por favor indicá si vas a asistir.');return;}
   var va=(radioAsis.value==='si' || radioAsis.value==='Si' || radioAsis.value==='SI');
-  var cantidadVal='No va a asistir';
+  var cantidadVal='0';
   if(va){
     var radioCant=document.querySelector('input[name="cantidad"]:checked');
     if(!radioCant){alert('Por favor indicá cuántas personas son.');return;}
