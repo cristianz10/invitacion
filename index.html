@@ -270,7 +270,7 @@ function enviarRSVP(){
   var formData=new FormData();
   formData.append('entry.1075135171',nombre);
   formData.append('entry.1331914687',va?'Si':'No');
-  formData.append('entry.927343248',cantidadVal);
+  if(va){formData.append('entry.927343248',cantidadVal);}
   formData.append('entry.2088091130',mensaje);
   fetch(FORM_ACTION,{method:'POST',mode:'no-cors',body:formData}).catch(function(){});
 
