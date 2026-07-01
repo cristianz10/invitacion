@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Cumpleaños Máxima 🎉</title>
-
-  <!-- Open Graph / WhatsApp preview -->
   <meta property="og:title" content="🎉 Cumpleaños de Máxima – ¡Estás invitado/a!">
   <meta property="og:description" content="Sábado 29 de agosto 2026 · Fiestas Presente, Quilmes · 21:00 hs ✨ Tocá para ver tu invitación">
   <meta property="og:image" content="https://cristianz10.github.io/invitacion/foto.png">
@@ -20,7 +18,6 @@
   <meta name="twitter:description" content="Sábado 29 de agosto 2026 · Quilmes · 21:00 hs ✨">
   <meta name="twitter:image" content="https://cristianz10.github.io/invitacion/foto.png">
   <meta name="theme-color" content="#1a0a0d">
-
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -208,8 +205,8 @@
             <label class="font-display text-rose-300 text-sm font-medium block mb-1" for="rsvp-mensaje">🌎 Mensaje (opcional)</label>
             <textarea id="rsvp-mensaje" class="rsvp-input" rows="3" placeholder="Escribí un mensaje..."></textarea>
           </div>
-          <button onclick="enviarRSVP()" class="btn-elegant w-full flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl mt-2" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));min-height:56px">
-            <span>💌</span><span>Enviar respuesta</span>
+          <button id="rsvp-btn" onclick="enviarRSVP()" class="btn-elegant w-full flex items-center justify-center gap-3 rounded-full px-8 py-4 font-display text-xl text-white shadow-2xl mt-2" style="background:linear-gradient(135deg,var(--accent-dark),var(--accent));min-height:56px">
+            <span id="rsvp-btn-icon">💌</span><span id="rsvp-btn-text">Enviar respuesta</span>
           </button>
         </div>
         <div id="rsvp-success" class="text-center py-6 hidden-block">
@@ -297,9 +294,20 @@ function toggleAudio(){
   else{a.pause();if(b)b.innerHTML='🔇';}
 }
 function onAsistenciaChange(){
-  var r=document.querySelector('input[name="asistencia"]:checked'),bl=document.getElementById('cantidadBlock');
+  var r=document.querySelector('input[name="asistencia"]:checked');
+  var bl=document.getElementById('cantidadBlock');
+  var btnIcon=document.getElementById('rsvp-btn-icon');
+  var btnText=document.getElementById('rsvp-btn-text');
   if(!bl)return;
-  if(r&&r.value==='Si')bl.classList.remove('hidden-block');else bl.classList.add('hidden-block');
+  if(r&&r.value==='Si'){
+    bl.classList.remove('hidden-block');
+    if(btnIcon)btnIcon.textContent='🎉';
+    if(btnText)btnText.textContent='Confirmar asistencia';
+  } else {
+    bl.classList.add('hidden-block');
+    if(btnIcon)btnIcon.textContent='💌';
+    if(btnText)btnText.textContent='Enviar respuesta';
+  }
 }
 function enviarRSVP(){
   var nombre=document.getElementById('rsvp-nombre').value.trim();
